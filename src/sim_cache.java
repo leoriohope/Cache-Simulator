@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -38,18 +35,23 @@ class sim_cache {
 		System.out.println("trace_file: ");
 
 
-		// CacheSimulater cacheSimulater = new CacheSimulater(blockSize, l1Size, l1Assoc, l2Size, l2Assoc,
-				// replacementPolicy, inclusionProperty);
+		CacheSimulater myCache = new CacheSimulater(blockSize, l1Size, l1Assoc, l2Size, l2Assoc,
+				replacementPolicy, inclusionProperty);
 
 		// Read trace
 		try {
 			File f = new File("../traces/" + trace);
 			BufferedReader b = new BufferedReader(new FileReader(f));
 			String readLine = "";
+			String[] operationArr;
 			System.out.println("Reading file using Buffered Reader");
 			while ((readLine = b.readLine()) != null) {
-				System.out.println(readLine);
+				// System.out.println(readLine);
+				// operationArr = readLine.split(" "); //["r", "FF2008CD"]
+				myCache.runSimulationByStep(readLine);
 			}
+
+			myCache.printStates();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
