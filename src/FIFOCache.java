@@ -1,0 +1,7 @@
+/**
+ * FIFOCache
+ */
+public class FIFOCache {
+
+    
+}

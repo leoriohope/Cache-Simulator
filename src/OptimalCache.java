@@ -1,0 +1,6 @@
+/**
+ * OptimalCache
+ */
+public class OptimalCache {
+    
+}
