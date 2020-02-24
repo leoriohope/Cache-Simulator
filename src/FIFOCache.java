@@ -9,6 +9,8 @@ public class FIFOCache implements Cache {
     Integer replacementPolicy;
     Integer inclusionProperty;
     Integer[][] cacheData;
+    Integer[][] order; // for FIFO counter which one is first
+    Integer[] cnt; // 
 
     public FIFOCache(Integer inputSize, Integer inputAssoc, Integer inputBlockSize, Integer inputReplacementPolicy, Integer inputInclusionProperty) {
         size = inputSize;
@@ -21,19 +23,24 @@ public class FIFOCache implements Cache {
     }
 
     @Override
-    public Integer read() {
+    public Long read(Long address) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Integer write() {
+    public Long write(Long address) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean isHit() {
+    public Long evict() {
+        return null;
+    }
+
+    @Override
+    public Boolean isHit(Long address) {
         // TODO Auto-generated method stub
         return false;
     }
