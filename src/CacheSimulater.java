@@ -39,14 +39,14 @@ public class CacheSimulater {
                     l2Cache.write(address);
                 }
             } else {
-                Long l2Evicted = l2Cache.evict();
+                Long l2Evicted = l2Cache.evict(address);
                 l2Cache.write(address);
                 if (operand == 0) {
                     l2Cache.read(address);       
                 }            
             }
 
-            Long l1Evicted = l1Cache.evict();
+            Long l1Evicted = l1Cache.evict(address);
             l1Cache.write(address);
             if (operand == 0) {
                 l1Cache.read(address);       
@@ -60,7 +60,7 @@ public class CacheSimulater {
                         l2Cache.write(l1Evicted); //Should mark dirty
                     }
                 } else {
-                    Long l2Evicted = l2Cache.evict();
+                    Long l2Evicted = l2Cache.evict(address);
                     l2Cache.write(l1Evicted);
                     if (operand == 0) {
                         l2Cache.read(l1Evicted);       

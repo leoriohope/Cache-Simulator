@@ -45,7 +45,7 @@ public class LRUCache implements Cache {
     }
 
     @Override
-    public Long evict() {
+    public Long evict(Long address) {
         return null;
     }
 
