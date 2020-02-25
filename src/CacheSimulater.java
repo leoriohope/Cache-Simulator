@@ -40,27 +40,32 @@ public class CacheSimulater {
                 }
             } else {
                 Long l2Evicted = l2Cache.evict();
+                l2Cache.write(address);
                 if (operand == 0) {
-                    l2Cache.read(address);
-                } else {
-                    l2Cache.write(address);
-                }                    
+                    l2Cache.read(address);       
+                }            
             }
 
             Long l1Evicted = l1Cache.evict();
+            l1Cache.write(address);
             if (operand == 0) {
-                l1Cache.read(address);
-            } else {
-                l1Cache.write(address);
-            }
+                l1Cache.read(address);       
+            } 
 
             if (l1Evicted != null) {
-                Long l2Evicted = l2Cache.evict();
-                if (operand == 0) {
-                    l2Cache.read(l1Evicted);
+                if (l2Cache.isHit(l1Evicted)) {
+                    if (operand == 0) {
+                        l2Cache.read(l1Evicted);
+                    } else {
+                        l2Cache.write(l1Evicted); //Should mark dirty
+                    }
                 } else {
+                    Long l2Evicted = l2Cache.evict();
                     l2Cache.write(l1Evicted);
-                }                     
+                    if (operand == 0) {
+                        l2Cache.read(l1Evicted);       
+                    }            
+                }
             }
         }
         return;
