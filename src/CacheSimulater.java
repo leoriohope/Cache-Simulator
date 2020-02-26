@@ -4,6 +4,7 @@
 public class CacheSimulater {
     Cache l1Cache;
     Cache l2Cache;
+    Integer inclusion;
     //Simulater states
     Integer l1Reads = 0;
     Integer l1ReadMiss = 0;
@@ -26,6 +27,7 @@ public class CacheSimulater {
         if (l2Size != 0) {
                 l2Cache = cacheFactory.getCache(l2Size, l2Assoc, blockSize, replacementPolicy, inclusionProperty);
         }
+        inclusion = inclusionProperty;
     }
 
     /**
@@ -95,25 +97,46 @@ public class CacheSimulater {
     }
 
     public void read(Long address) {
+        l1Reads++;  //Each read count
         if (l1Cache.isHit(address)) {
             l1Cache.read(address); //update 
             return;
         } else {
+            l1ReadMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
                 if (l1Evict != null) {
+                    l1Writebacks++;
+                    l2Writes++;
                     //Init a l2 write
                     if (l2Cache.isHit(l1Evict)) {
                         l2Cache.writeAndSetDirty(l1Evict);
                     } else { //if l2 not hit on write
+                        l2WriteMiss++;
                         Long l2Evict = l2Cache.evict(l1Evict);
+                        //TODO back invalid logic
+                        if (l2Evict != null) {
+                            l2Writebacks++;
+                            if (inclusion == 1) {
+                                l1Cache.invalid(l2Evict);
+                            }
+                        }
                         l2Cache.writeAndSetDirty(l1Evict);
                     }
+                }
                 //Init a l2 read
+                l2Reads++;
                 if (l2Cache.isHit(address)) {
                     l2Cache.read(address);
                 } else {
+                    l2ReadMiss++;
                     Long l2Evict = l2Cache.evict(address);
+                    if (l2Evict != null) {
+                        l2Writebacks++;
+                        if (inclusion == 1) {
+                            l1Cache.invalid(l2Evict);
+                        }
+                    }
                     l2Cache.write(address);
                 }
             }
@@ -123,11 +146,48 @@ public class CacheSimulater {
     }
 
     public void write(Long address) {
+        l1Writes++;
         if (l1Cache.isHit(address)) {
             l1Cache.writeAndSetDirty(address);
         } else {
+            l1WriteMiss++;
             Long l1Evict = l1Cache.evict(address);
-            if (l2Cache != null && )
+            if (l2Cache != null) {
+                if (l1Evict != null) {
+                    l1Writebacks++;
+                    l2Writes++;
+                    //Init a l2 write
+                    if (l2Cache.isHit(l1Evict)) {
+                        l2Cache.writeAndSetDirty(l1Evict);
+                    } else { //if l2 not hit on write
+                        l2WriteMiss++;
+                        Long l2Evict = l2Cache.evict(l1Evict);
+                        if (l2Evict != null) {
+                            l2Writebacks++;
+                            if (inclusion == 1) {
+                                l1Cache.invalid(l2Evict);
+                            }
+                        }
+                        l2Cache.writeAndSetDirty(l1Evict);
+                    }
+                }
+                //Init a l2 read
+                l2Reads++;
+                if (l2Cache.isHit(address)) {
+                    l2Cache.read(address);
+                } else {
+                    l2ReadMiss++;
+                    Long l2Evict = l2Cache.evict(address);
+                    if (l2Evict != null) {
+                        l2Writebacks++;
+                        if (inclusion == 1) {
+                            l1Cache.invalid(l2Evict);
+                        }
+                    }
+                    l2Cache.write(address);
+                }
+            }
+            l1Cache.writeAndSetDirty(address); //Write here is allocate
         }
     }
 

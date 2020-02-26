@@ -93,7 +93,7 @@ public class FIFOCache2 implements Cache {
         for (int i = 0; i < assoc; i++) {
             Long curr = queue.get(index).get(i);
             if (((curr & 4L) == 1L) || (curr >> 1 == 0L)) { 
-                queue.get(index).set(i, (tag << 3) & ); // & 0...0000100 to set the dirty bit
+                queue.get(index).set(i, (tag << 3) & 1); // & 0...0000100 to set the dirty bit
                 return queue.get(index).get(i);
             }
         }
@@ -101,17 +101,22 @@ public class FIFOCache2 implements Cache {
     }
 
     @Override
+    public void writeAndSetDirty(Long address) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
     public Long evict(Long address) {
-        Integer index = getIndex(address).intValue();
-        for (int i = 0; i < assoc; i++) {
-            if ((cacheData[index][i] & 1L) == 0 || cacheData[index][i] == 0) { 
-                return null;
-            } 
-        }
-        for (int i = 0; i < assoc; i++) {
-            // TODO choose the one with smallest order and evict it
-        }
+
         return null;
+    }
+
+    @Override
+    public Boolean invalid(Long address) {
+        // TODO Auto-generated method stub
+        return false;
+        
     }
 
     @Override
