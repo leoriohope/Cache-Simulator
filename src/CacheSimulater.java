@@ -105,15 +105,16 @@ public class CacheSimulater {
             l1ReadMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if (l1Evict != null) {
+                if ((l1Evict != null) && ((l1Evict & 2) == 1)) { //Init the write requres only when the evicted block is dirty
+                    Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
                     //Init a l2 write
-                    if (l2Cache.isHit(l1Evict)) {
-                        l2Cache.writeAndSetDirty(l1Evict);
+                    if (l2Cache.isHit(l1EvictAddress)) {
+                        l2Cache.writeAndSetDirty(l1EvictAddress);
                     } else { //if l2 not hit on write
                         l2WriteMiss++;
-                        Long l2Evict = l2Cache.evict(l1Evict);
+                        Long l2Evict = l2Cache.evict(l1EvictAddress);
                         //TODO back invalid logic
                         if (l2Evict != null) {
                             l2Writebacks++;
@@ -121,7 +122,7 @@ public class CacheSimulater {
                                 l1Cache.invalid(l2Evict);
                             }
                         }
-                        l2Cache.writeAndSetDirty(l1Evict);
+                        l2Cache.writeAndSetDirty(l1EvictAddress);
                     }
                 }
                 //Init a l2 read
@@ -131,10 +132,13 @@ public class CacheSimulater {
                 } else {
                     l2ReadMiss++;
                     Long l2Evict = l2Cache.evict(address);
-                    if (l2Evict != null) {
-                        l2Writebacks++;
+                    if (l2Evict != null && ((l2Evict & 1L) != 1)) {
+                        Long l2EvictAddress = l2Evict >> 2;
+                        if ((l2Evict & 2L) == 1) {
+                            l2Writebacks++;
+                        }
                         if (inclusion == 1) {
-                            l1Cache.invalid(l2Evict);
+                            l1Cache.invalid(l2EvictAddress);
                         }
                     }
                     l2Cache.write(address);
@@ -153,22 +157,23 @@ public class CacheSimulater {
             l1WriteMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if (l1Evict != null) {
+                if ((l1Evict != null) && ((l1Evict & 2) == 1)) { //Init the write requres only when the evicted block is dirty
+                Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
                     //Init a l2 write
-                    if (l2Cache.isHit(l1Evict)) {
-                        l2Cache.writeAndSetDirty(l1Evict);
+                    if (l2Cache.isHit(l1EvictAddress)) {
+                        l2Cache.writeAndSetDirty(l1EvictAddress);
                     } else { //if l2 not hit on write
                         l2WriteMiss++;
-                        Long l2Evict = l2Cache.evict(l1Evict);
+                        Long l2Evict = l2Cache.evict(l1EvictAddress);
                         if (l2Evict != null) {
                             l2Writebacks++;
                             if (inclusion == 1) {
                                 l1Cache.invalid(l2Evict);
                             }
                         }
-                        l2Cache.writeAndSetDirty(l1Evict);
+                        l2Cache.writeAndSetDirty(l1EvictAddress);
                     }
                 }
                 //Init a l2 read
@@ -178,10 +183,13 @@ public class CacheSimulater {
                 } else {
                     l2ReadMiss++;
                     Long l2Evict = l2Cache.evict(address);
-                    if (l2Evict != null) {
-                        l2Writebacks++;
+                    if (l2Evict != null && ((l2Evict & 1L) != 1)) {
+                        Long l2EvictAddress = l2Evict >> 2;
+                        if ((l2Evict & 2L) == 1) {
+                            l2Writebacks++;
+                        }
                         if (inclusion == 1) {
-                            l1Cache.invalid(l2Evict);
+                            l1Cache.invalid(l2EvictAddress);
                         }
                     }
                     l2Cache.write(address);

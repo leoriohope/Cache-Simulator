@@ -59,6 +59,7 @@ public class FIFOCache implements Cache {
     public Long write(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        //Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
             if ((entry & 1) == 1 || entry == 0L) { //Find the first empty entry
