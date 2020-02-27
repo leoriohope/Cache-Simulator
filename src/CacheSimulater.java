@@ -45,55 +45,6 @@ public class CacheSimulater {
         } else {
             write(address);
         }
-        // Check whether L1 cache hit
-        // if (l1Cache.isHit(address)) {  //increment hit count in cache itself
-        //     if (operand == 0) {
-        //         l1Cache.read(address);
-        //     } else {
-        //         l1Cache.write(address);  // TODO: handle mark dirty in write
-        //     }
-        // } else { // If not hit
-        //     // Handle L2 first
-        //     if (l2Cache != null) {
-        //         if (l2Cache.isHit(address)) {
-        //             if (operand == 0) {
-        //                 l2Cache.read(address);
-        //             } else {
-        //                 l2Cache.write(address);
-        //             }
-        //         } else {
-        //             Long l2Evicted = l2Cache.evict(address);
-        //             l2Cache.write(address);
-        //             if (operand == 0) {
-        //                 l2Cache.read(address);       
-        //             }            
-        //         }
-        //     }
-        //     Long l1Evicted = l1Cache.evict(address);
-        //     l1Cache.write(address);
-        //     if (operand == 0) {
-        //         l1Cache.read(address);       
-        //     } 
-
-        //     if (l1Evicted != null) {
-        //         if (l2Cache != null) {
-        //             if (l2Cache.isHit(l1Evicted)) {
-        //                 if (operand == 0) {
-        //                     l2Cache.read(l1Evicted);
-        //                 } else {
-        //                     l2Cache.write(l1Evicted); //Should mark dirty
-        //                 }
-        //             } else {
-        //                 Long l2Evicted = l2Cache.evict(address);
-        //                 l2Cache.write(l1Evicted);
-        //                 if (operand == 0) {
-        //                     l2Cache.read(l1Evicted);       
-        //                 }            
-        //             }
-        //         }   
-        //     }
-        // }
-        // return;
     }
 
     public void read(Long address) {
@@ -115,7 +66,6 @@ public class CacheSimulater {
                     } else { //if l2 not hit on write
                         l2WriteMiss++;
                         Long l2Evict = l2Cache.evict(l1EvictAddress);
-                        //TODO back invalid logic
                         if (l2Evict != null) {
                             l2Writebacks++;
                             if (inclusion == 1) {

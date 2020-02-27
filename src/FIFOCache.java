@@ -32,7 +32,17 @@ public class FIFOCache implements Cache {
         replacementPolicy = inputReplacementPolicy;
         inclusionProperty = inputInclusionProperty;
         cacheData = new Long[numOfSet][assoc];
+        for (int i = 0; i < numOfSet; i++) { // Init cache
+            for (int j = 0; j < assoc; j++) {
+                cacheData[i][j] = 0L;
+            }
+        }
         order = new Integer[numOfSet][assoc];
+        for (int i = 0; i < numOfSet; i++) { // Init order
+            for (int j = 0; j < assoc; j++) {
+                order[i][j] = 0;
+            }
+        }
         cnt = new Integer[numOfSet];
         idxLength = log2(numOfSet);
         blockLength = log2(blockSize * 8);//16 in byte
@@ -46,26 +56,30 @@ public class FIFOCache implements Cache {
     public Long read(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        // System.out.println("tag from read(): " + tag);
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((getTag(entry >> 2)) == tag) { //Last bit for valid or invalid, the second last bit for dirty or non-dirty
+            if ((getTag(entry >> 2)).equals(tag)) { //Last bit for valid or invalid, the second last bit for dirty or non-dirty
+                // System.out.println("tag in compare: " + getTag(entry >> 2));
                 return address;
             }
         }
         return null;
     }
+    
 
     @Override
     public Long write(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        // System.out.println(index);
         //Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
             if ((entry & 1) == 1 || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
-                return null;
+                return cacheData[index][i];
             } 
         }
         return null; 
@@ -106,7 +120,7 @@ public class FIFOCache implements Cache {
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 0 && getTag(entry >> 2) == tag) {
+            if ((entry & 1L) == 0L && getTag(entry >> 2).equals(tag)) {
                 return true;
             }
         }
@@ -196,8 +210,13 @@ public class FIFOCache implements Cache {
 
     public static void main(String[] args) {
         FIFOCache myCache = new FIFOCache(1024, 2, 16, 0, 0);
-        System.out.println(myCache.getIndex(1073955232L));
-        System.out.println(myCache.getTag(1073955232L));
+        // System.out.println(myCache.getIndex(1073955232L));
+        // System.out.println(myCache.getTag(1073955232L));
+
+        System.out.println(myCache.write(1073955232L));
+        System.out.println(myCache.read(1073955232L));
+        System.out.println(myCache.isHit(1073955232L));
+        myCache.printState();
         // System.out.println(myCache.numOfSet);
         // System.out.println(myCache.tagLength);
         // System.out.println(myCache.idxLength);
