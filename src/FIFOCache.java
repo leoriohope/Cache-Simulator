@@ -45,7 +45,7 @@ public class FIFOCache implements Cache {
         }
         cnt = new Integer[numOfSet];
         idxLength = log2(numOfSet);
-        blockLength = log2(blockSize * 8);//16 in byte
+        blockLength = log2(blockSize);//16 in byte
         tagLength = 32 - idxLength - blockLength;
     }
 
@@ -76,13 +76,28 @@ public class FIFOCache implements Cache {
         //Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1) == 1 || entry == 0L) { //Find the first empty entry
+            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
                 return cacheData[index][i];
             } 
         }
         return null; 
+    }
+
+    @Override
+    public Long writeAndSetDirty(Long address) {
+        Long tag = getTag(address);
+        Integer index = getIndex(address).intValue();
+        for (int i = 0; i < assoc; i++) {
+            Long entry = cacheData[index][i];
+            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
+                cacheData[index][i] = ((address << 2) | 2L); // make dirty here
+                updateOrder(address);
+                return cacheData[index][i];
+            }
+        }
+        return null;
     }
 
     /**
@@ -150,19 +165,6 @@ public class FIFOCache implements Cache {
         return false;
     }
 
-    @Override
-    public void writeAndSetDirty(Long address) {
-        Long tag = getTag(address);
-        Integer index = getIndex(address).intValue();
-        for (int i = 0; i < assoc; i++) {
-            Long entry = cacheData[index][i];
-            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
-                cacheData[index][i] = ((address << 2) & 2L); // make dirty here
-                updateOrder(address);
-            }
-        }
-    }
-
     private void updateOrder(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
@@ -181,15 +183,29 @@ public class FIFOCache implements Cache {
     public void printState() {
         // Set     0:      20018a    20028d D 
         for (int i = 0; i < numOfSet; i++) {
-            System.out.println("Set     " + i + ":");
+            System.out.print("Set     " + i + ":   ");
             for (int j = 0; j < assoc; j++) {
                 Long entry = cacheData[i][j];
                 Long tag = getTag(entry >> 2);
-                System.out.println(Long.toHexString(tag) + "    ");
-                if ((entry & 2L) == 1) {
-                    System.out.println(" D");
+                // System.out.println(tag);
+                System.out.print("    " + Long.toHexString(tag));
+                if ((entry & 2L) != 0) {
+                    // System.out.println("ldfdsl  " + (entry & 2L));
+                    System.out.print(" D  ");
                 }   
             }
+            System.out.println();
+        }
+    }
+
+    
+    private void printOrder() {
+        for (int i = 0; i < numOfSet; i++) {
+            System.out.print("Set     " + i + ":   ");
+            for (int j = 0; j < assoc; j++) {
+                System.out.print(order[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 
@@ -213,14 +229,17 @@ public class FIFOCache implements Cache {
         // System.out.println(myCache.getIndex(1073955232L));
         // System.out.println(myCache.getTag(1073955232L));
 
-        System.out.println(myCache.write(1073955232L));
+        // System.out.println(myCache.write(1073955232L));
+        System.out.println(myCache.writeAndSetDirty(1073955232L));
+        // System.out.println(myCache.evict(1073955232L));
         System.out.println(myCache.read(1073955232L));
         System.out.println(myCache.isHit(1073955232L));
         myCache.printState();
+        myCache.printOrder();
         // System.out.println(myCache.numOfSet);
-        // System.out.println(myCache.tagLength);
-        // System.out.println(myCache.idxLength);
-        // System.out.println(myCache.blockLength);
+        System.out.println("tag length:  " + myCache.tagLength);
+        System.out.println("idx length:  " + myCache.idxLength);
+        System.out.println("blocklength: " + myCache.blockLength);
     }
 
 }
