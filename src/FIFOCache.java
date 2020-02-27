@@ -109,7 +109,7 @@ public class FIFOCache implements Cache {
         //If there is invalid or empty line, return null
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 0 || entry == 0) { 
+            if ((entry & 1L) != 0 || entry == 0) { 
                 return null;
             } 
         }
@@ -153,7 +153,7 @@ public class FIFOCache implements Cache {
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if (getTag(entry >> 2) == tag) {
+            if (getTag(entry >> 2).equals(tag)) {
                 cacheData[index][i] |= 1L; // set the last bit to 1
                 order[index][i] = 0; // update the order either
                 if ((entry & 2L) == 1L) {
@@ -192,7 +192,10 @@ public class FIFOCache implements Cache {
                 if ((entry & 2L) != 0) {
                     // System.out.println("ldfdsl  " + (entry & 2L));
                     System.out.print(" D  ");
-                }   
+                } 
+                if ((entry & 1L) != 0) {
+                    System.out.print(" I  ");
+                }
             }
             System.out.println();
         }
@@ -231,9 +234,13 @@ public class FIFOCache implements Cache {
 
         // System.out.println(myCache.write(1073955232L));
         System.out.println(myCache.writeAndSetDirty(1073955232L));
-        // System.out.println(myCache.evict(1073955232L));
-        System.out.println(myCache.read(1073955232L));
+        System.out.println(myCache.write(14667688L));
+        System.out.println(myCache.invalid(14667688L));
+        // System.out.println("evicted: " + myCache.evict(14667688L));
+        System.out.println("Write: " + myCache.write(1111157664L));
         System.out.println(myCache.isHit(1073955232L));
+        // System.out.println(myCache.read(1073955232L));
+        // System.out.println(myCache.isHit(1073955232L));
         myCache.printState();
         myCache.printOrder();
         // System.out.println(myCache.numOfSet);
