@@ -76,6 +76,15 @@ public class FIFOCache implements Cache {
         //Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
+            if ((entry >> 2) == address) { //Find the first empty entry
+                cacheData[index][i] = (address << 2); // Don't make dirty here
+                // updateOrder(address);
+                return cacheData[index][i];
+            } 
+        }      
+        //Write when miss
+        for (int i = 0; i < assoc; i++) {
+            Long entry = cacheData[index][i];
             if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
@@ -89,6 +98,16 @@ public class FIFOCache implements Cache {
     public Long writeAndSetDirty(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        // Write when hit
+        for (int i = 0; i < assoc; i++) {
+            Long entry = cacheData[index][i];
+            if ((entry >> 2) == address) { //Find the first empty entry
+                cacheData[index][i] = (address << 2); // Don't make dirty here
+                // updateOrder(address);
+                return cacheData[index][i];
+            } 
+        } 
+        //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
             if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
@@ -243,8 +262,8 @@ public class FIFOCache implements Cache {
         // System.out.println(myCache.isHit(1073955232L));
 
 
-        // myCache.printState();
-        // myCache.printOrder();
+        myCache.printState();
+        myCache.printOrder();
 
 
         // System.out.println(myCache.numOfSet);

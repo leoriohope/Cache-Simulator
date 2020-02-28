@@ -97,8 +97,8 @@ public class CacheSimulater {
                 if ((l1Evict != null) && ((l1Evict & 2L) != 0)) { //Init the write requres only when the evicted block is dirty
                     // System.out.println("A write back!");
                     l1Writebacks++;
+                }
             }
-        }
             l1Cache.write(address); //Write here is allocate
             l1Cache.read(address);
         }
