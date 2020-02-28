@@ -32,7 +32,7 @@ class sim_cache {
 		System.out.println("L2_ASSOC: " + l2Assoc);
 		System.out.println("REPLACEMENT POLICY: " + lOfReplacementPolicy[replacementPolicy]);
 		System.out.println("INCLUSION PROPERTY: " + lOfinclusionProperty[inclusionProperty]);
-		System.out.println("trace_file: ");
+		System.out.println("trace_file: " + trace);
 
 
 		CacheSimulater myCache = new CacheSimulater(blockSize, l1Size, l1Assoc, l2Size, l2Assoc,
@@ -44,13 +44,13 @@ class sim_cache {
 			BufferedReader b = new BufferedReader(new FileReader(f));
 			String readLine = "";
 			String[] operationArr;
-			System.out.println("Reading file using Buffered Reader");
+			System.out.println();
 			while ((readLine = b.readLine()) != null) {
 				// System.out.println(readLine);
 				// operationArr = readLine.split(" "); //["r", "FF2008CD"]
 				myCache.runSimulationByStep(readLine);
 			}
-
+			myCache.l1Cache.printState();
 			myCache.printStates();
 		} catch (IOException e) {
 			e.printStackTrace();

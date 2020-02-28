@@ -234,19 +234,22 @@ public class FIFOCache implements Cache {
 
         // System.out.println(myCache.write(1073955232L));
         System.out.println(myCache.writeAndSetDirty(1073955232L));
-        System.out.println(myCache.write(14667688L));
-        System.out.println(myCache.invalid(14667688L));
-        // System.out.println("evicted: " + myCache.evict(14667688L));
+        System.out.println(myCache.writeAndSetDirty(14667688L));
+        // System.out.println(myCache.invalid(14667688L));
+        System.out.println("evicted: " + myCache.evict(14667688L));
         System.out.println("Write: " + myCache.write(1111157664L));
         System.out.println(myCache.isHit(1073955232L));
         // System.out.println(myCache.read(1073955232L));
         // System.out.println(myCache.isHit(1073955232L));
-        myCache.printState();
-        myCache.printOrder();
-        // System.out.println(myCache.numOfSet);
-        System.out.println("tag length:  " + myCache.tagLength);
-        System.out.println("idx length:  " + myCache.idxLength);
-        System.out.println("blocklength: " + myCache.blockLength);
-    }
 
+
+        // myCache.printState();
+        // myCache.printOrder();
+
+
+        // System.out.println(myCache.numOfSet);
+        // System.out.println("tag length:  " + myCache.tagLength);
+        // System.out.println("idx length:  " + myCache.idxLength);
+        // System.out.println("blocklength: " + myCache.blockLength);
+    }
 }

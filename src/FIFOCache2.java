@@ -101,9 +101,9 @@ public class FIFOCache2 implements Cache {
     }
 
     @Override
-    public void writeAndSetDirty(Long address) {
+    public Long writeAndSetDirty(Long address) {
         // TODO Auto-generated method stub
-
+        return null;
     }
 
     @Override

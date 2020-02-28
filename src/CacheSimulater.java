@@ -56,7 +56,7 @@ public class CacheSimulater {
             l1ReadMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if ((l1Evict != null) && ((l1Evict & 2) == 1)) { //Init the write requres only when the evicted block is dirty
+                if ((l1Evict != null) && ((l1Evict & 2) != 0)) { //Init the write requres only when the evicted block is dirty
                     Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
@@ -93,7 +93,12 @@ public class CacheSimulater {
                     }
                     l2Cache.write(address);
                 }
+            } else {
+                if ((l1Evict != null) && ((l1Evict & 2L) != 0)) { //Init the write requres only when the evicted block is dirty
+                    // System.out.println("A write back!");
+                    l1Writebacks++;
             }
+        }
             l1Cache.write(address); //Write here is allocate
             l1Cache.read(address);
         }
@@ -107,8 +112,8 @@ public class CacheSimulater {
             l1WriteMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if ((l1Evict != null) && ((l1Evict & 2) == 1)) { //Init the write requres only when the evicted block is dirty
-                Long l1EvictAddress = l1Evict >> 2;
+                if ((l1Evict != null) && ((l1Evict & 2) != 0)) { //Init the write requres only when the evicted block is dirty
+                    Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
                     //Init a l2 write
@@ -144,13 +149,36 @@ public class CacheSimulater {
                     }
                     l2Cache.write(address);
                 }
+            } else {
+                if ((l1Evict != null) && (l1Evict & 2L) != 0) { //Init the write requres only when the evicted block is dirty
+                        l1Writebacks++;
+                }
             }
             l1Cache.writeAndSetDirty(address); //Write here is allocate
         }
     }
 
     public void printStates() {
-        System.out.println("statestatestate");;
+        System.out.println("===== Simulation results (raw) ===== ");
+        System.out.println("a. number of L1 reads:   " + l1Reads);
+        System.out.println("b. number of L1 read misses:   " + l1ReadMiss);
+        System.out.println("c. number of L1 writes:   " + l1Writes);
+        System.out.println("d. number of L1 write misses:   " + l1WriteMiss);
+        System.out.println("e. L1 miss rate:    " + (l1ReadMiss + l1WriteMiss) / (double)(l1Reads + l1Writes));
+        System.out.println("f. number of L1 writebacks:    " + l1Writebacks);
+        System.out.println("g. number of L2 reads:    " + l2Reads);
+        System.out.println("h. number of L2 read misses:    " + l2ReadMiss);
+        System.out.println("i. number of L2 writes:     " + l2Writes);
+        System.out.println("j. number of L2 write misses:    " + l2WriteMiss);
+        System.out.print("k. L2 miss rate:     ");
+        if ((l2Reads + l2Writes) == 0) {
+            System.out.println(0);
+        } else {
+            System.out.println((l2ReadMiss + l2WriteMiss) / (l2Reads + l2Writes));
+        }
+        System.out.println("l. number of L2 writebacks:     " + l2Writebacks);
+        System.out.println("m. total memory traffic:      " + "N/A");
+
     }
 
     /**
@@ -178,7 +206,13 @@ public class CacheSimulater {
 
     public static void main(String[] args) {
         CacheSimulater mySimulater = new CacheSimulater(16, 1024, 2, 0, 0, 1, 0);
-        System.out.println(mySimulater.getAddress("w dfcfa8"));
-        System.out.println(mySimulater.getOperand("w dfcfa8"));
+        mySimulater.runSimulationByStep("w 400341a0");
+        mySimulater.runSimulationByStep("r dfcfa8");
+        // System.out.println(mySimulater.getAddress("w dfcfa8"));
+        // System.out.println(mySimulater.getOperand("w dfcfa8"));
+        // mySimulater.write(1073955232L);
+        // mySimulater.read(1073955232L);
+        mySimulater.l1Cache.printState();
+        mySimulater.printStates();
     }
 }

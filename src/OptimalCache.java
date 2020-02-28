@@ -136,7 +136,7 @@ public class OptimalCache implements Cache{
     }
 
     @Override
-    public void writeAndSetDirty(Long address) {
+    public Long writeAndSetDirty(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
@@ -146,6 +146,7 @@ public class OptimalCache implements Cache{
                 updateOrder(address);
             }
         }
+        return null;
     }
 
     private void updateOrder(Long address) {
