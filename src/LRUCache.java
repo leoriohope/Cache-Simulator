@@ -32,10 +32,20 @@ public class LRUCache implements Cache {
         replacementPolicy = inputReplacementPolicy;
         inclusionProperty = inputInclusionProperty;
         cacheData = new Long[numOfSet][assoc];
+        for (int i = 0; i < numOfSet; i++) { // Init cache
+            for (int j = 0; j < assoc; j++) {
+                cacheData[i][j] = 0L;
+            }
+        }
         order = new Integer[numOfSet][assoc];
+        for (int i = 0; i < numOfSet; i++) { // Init order
+            for (int j = 0; j < assoc; j++) {
+                order[i][j] = 0;
+            }
+        }
         cnt = new Integer[numOfSet];
         idxLength = log2(numOfSet);
-        blockLength = log2(blockSize * 8);//16 in byte
+        blockLength = log2(blockSize);//16 in byte
         tagLength = 32 - idxLength - blockLength;
     }
 
@@ -46,28 +56,69 @@ public class LRUCache implements Cache {
     public Long read(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        // System.out.println("tag from read(): " + tag);
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((getTag(entry >> 2)) == tag) { //Last bit for valid or invalid, the second last bit for dirty or non-dirty
+            if ((getTag(entry >> 2)).equals(tag)) { //Last bit for valid or invalid, the second last bit for dirty or non-dirty
+                // System.out.println("tag in compare: " + getTag(entry >> 2));
+                updateOrder(address);
                 return address;
             }
         }
         return null;
     }
+    
 
     @Override
     public Long write(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
+        // System.out.println(index);
+        //Write when hit
+        // for (int i = 0; i < assoc; i++) {
+        //     Long entry = cacheData[index][i];
+        //     if ((entry >> 2) == address) { //Find the first empty entry
+        //         cacheData[index][i] = (address << 2); // Don't make dirty here
+        //         // updateOrder(address);
+        //         return cacheData[index][i];
+        //     } 
+        // }      
+        //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1) == 1 || entry == 0L) { //Find the first empty entry
+            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
-                return null;
+                return cacheData[index][i];
             } 
         }
         return null; 
+    }
+
+    @Override
+    public Long writeAndSetDirty(Long address) {
+        Long tag = getTag(address);
+        Integer index = getIndex(address).intValue();
+        // Write when hit
+        for (int i = 0; i < assoc; i++) {
+            Long entry = cacheData[index][i];
+            if ((getTag(entry >> 2)).equals(tag)) { //Find the first empty entry
+                // System.out.println("find a write hit");
+                cacheData[index][i] = (((address << 2) | 2L)); // Don't make dirty here
+                updateOrder(address);
+                return cacheData[index][i];
+            } 
+        } 
+        //Write when miss
+        for (int i = 0; i < assoc; i++) {
+            Long entry = cacheData[index][i];
+            if ((entry & 1L) != 0 || entry == 0L) { //Find the first empty entry
+                cacheData[index][i] = ((address << 2) | 2L); // make dirty here
+                updateOrder(address);
+                return cacheData[index][i];
+            }
+        }
+        return null;
     }
 
     /**
@@ -79,7 +130,7 @@ public class LRUCache implements Cache {
         //If there is invalid or empty line, return null
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 0 || entry == 0) { 
+            if ((entry & 1L) != 0 || entry == 0) { 
                 return null;
             } 
         }
@@ -105,7 +156,7 @@ public class LRUCache implements Cache {
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 0 && getTag(entry >> 2) == tag) {
+            if ((entry & 1L) == 0L && getTag(entry >> 2).equals(tag)) {
                 return true;
             }
         }
@@ -123,7 +174,7 @@ public class LRUCache implements Cache {
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if (getTag(entry >> 2) == tag) {
+            if (getTag(entry >> 2).equals(tag)) {
                 cacheData[index][i] |= 1L; // set the last bit to 1
                 order[index][i] = 0; // update the order either
                 if ((entry & 2L) == 1L) {
@@ -135,30 +186,15 @@ public class LRUCache implements Cache {
         return false;
     }
 
-    @Override
-    public Long writeAndSetDirty(Long address) {
-        Long tag = getTag(address);
-        Integer index = getIndex(address).intValue();
-        for (int i = 0; i < assoc; i++) {
-            Long entry = cacheData[index][i];
-            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
-                cacheData[index][i] = ((address << 2) & 2L); // make dirty here
-                updateOrder(address);
-                return null;
-            }
-        }
-        return null;
-    }
-
     private void updateOrder(Long address) {
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) != 1 && entry != 0) { // update the counter for each entry
+            if ((entry & 1L) == 0 && entry != 0) { // update the counter for each entry
                 order[index][i]++;
             }
-            if ((entry & 1L) == 0 && getTag(entry >> 2) == tag) {
+            if ((entry & 1L) == 0 && getTag(entry >> 2).equals(tag)) {
                 order[index][i] = 0;
             }
         }
@@ -168,15 +204,32 @@ public class LRUCache implements Cache {
     public void printState() {
         // Set     0:      20018a    20028d D 
         for (int i = 0; i < numOfSet; i++) {
-            System.out.println("Set     " + i + ":");
+            System.out.print("Set     " + i + ":   ");
             for (int j = 0; j < assoc; j++) {
                 Long entry = cacheData[i][j];
                 Long tag = getTag(entry >> 2);
-                System.out.println(Long.toHexString(tag) + "    ");
-                if ((entry & 2L) == 1) {
-                    System.out.println(" D");
-                }   
+                // System.out.println(tag);
+                System.out.print("    " + Long.toHexString(tag));
+                if ((entry & 2L) != 0) {
+                    // System.out.println("ldfdsl  " + (entry & 2L));
+                    System.out.print(" D  ");
+                } 
+                if ((entry & 1L) != 0) {
+                    System.out.print(" I  ");
+                }
             }
+            System.out.println();
+        }
+    }
+
+    
+    private void printOrder() {
+        for (int i = 0; i < numOfSet; i++) {
+            System.out.print("Set     " + i + ":   ");
+            for (int j = 0; j < assoc; j++) {
+                System.out.print(order[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 
@@ -190,5 +243,35 @@ public class LRUCache implements Cache {
 
     private Long getIndex(Long address) {
         return (address >> blockLength) & ((1L << idxLength) - 1L);
+    }
+
+
+
+
+    public static void main(String[] args) {
+        LRUCache myCache = new LRUCache(1024, 2, 16, 0, 0);
+        // System.out.println(myCache.getIndex(1073955232L));
+        // System.out.println(myCache.getTag(1073955232L));
+
+        // System.out.println(myCache.write(1073955232L));
+        System.out.println(myCache.writeAndSetDirty(1073955232L));
+        System.out.println(myCache.writeAndSetDirty(14667688L));
+        System.out.println(myCache.read(1073955232L));
+        // System.out.println(myCache.invalid(14667688L));
+        System.out.println("evicted: " + myCache.evict(14667688L));
+        System.out.println("Write: " + myCache.write(1111157664L));
+        // System.out.println(myCache.isHit(1073955232L));
+        // System.out.println(myCache.read(1073955232L));
+        // System.out.println(myCache.isHit(1073955232L));
+
+
+        myCache.printState();
+        myCache.printOrder();
+
+
+        // System.out.println(myCache.numOfSet);
+        // System.out.println("tag length:  " + myCache.tagLength);
+        // System.out.println("idx length:  " + myCache.idxLength);
+        // System.out.println("blocklength: " + myCache.blockLength);
     }
 }

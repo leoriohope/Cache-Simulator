@@ -193,7 +193,7 @@ public class FIFOCache implements Cache {
             if ((entry & 1L) != 1 && entry != 0) { // update the counter for each entry
                 order[index][i]++;
             }
-            if ((entry & 1L) == 0 && getTag(entry >> 2) == tag) {
+            if ((entry & 1L) == 0 && getTag(entry >> 2).equals(tag)) {
                 order[index][i] = 0;
             }
         }
