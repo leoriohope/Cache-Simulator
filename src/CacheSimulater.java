@@ -18,6 +18,7 @@ public class CacheSimulater {
     Integer l2WriteMiss = 0;
     Integer l2Writebacks = 0;
     Double  l2MissRate = 0.0;
+    Integer totalMemoryTraffic = 0;
 
     
     public CacheSimulater(Integer blockSize, Integer l1Size, Integer l1Assoc, Integer l2Size, Integer l2Assoc, Integer replacementPolicy, Integer inclusionProperty) {
@@ -65,11 +66,18 @@ public class CacheSimulater {
                         l2Cache.writeAndSetDirty(l1EvictAddress);
                     } else { //if l2 not hit on write
                         l2WriteMiss++;
+                        totalMemoryTraffic++;
                         Long l2Evict = l2Cache.evict(l1EvictAddress);
-                        if (l2Evict != null) {
-                            l2Writebacks++;
+                        if (l2Evict != null && ((l2Evict & 1L) != 1)) {
+                            Long l2EvictAddress = l2Evict >> 2;
+                            if ((l2Evict & 2L) != 0) { 
+                                l2Writebacks++;
+                                totalMemoryTraffic++;
+                            }
                             if (inclusion == 1) {
-                                l1Cache.invalid(l2Evict);
+                                if (l1Cache.invalid(l2EvictAddress)) {
+                                    totalMemoryTraffic++;
+                                }
                             }
                         }
                         l2Cache.writeAndSetDirty(l1EvictAddress);
@@ -81,14 +89,18 @@ public class CacheSimulater {
                     l2Cache.read(address);
                 } else {
                     l2ReadMiss++;
+                    totalMemoryTraffic++;
                     Long l2Evict = l2Cache.evict(address);
                     if (l2Evict != null && ((l2Evict & 1L) != 1)) {
                         Long l2EvictAddress = l2Evict >> 2;
-                        if ((l2Evict & 2L) == 1) {
+                        if ((l2Evict & 2L) != 0) { 
                             l2Writebacks++;
+                            totalMemoryTraffic++;
                         }
                         if (inclusion == 1) {
-                            l1Cache.invalid(l2EvictAddress);
+                            if (l1Cache.invalid(l2EvictAddress)) {
+                                totalMemoryTraffic++;
+                            }
                         }
                     }
                     l2Cache.write(address);
@@ -97,7 +109,9 @@ public class CacheSimulater {
                 if ((l1Evict != null) && ((l1Evict & 2L) != 0)) { //Init the write requres only when the evicted block is dirty
                     // System.out.println("A write back!");
                     l1Writebacks++;
+                    totalMemoryTraffic++;
                 }
+                totalMemoryTraffic++;
             }
             l1Cache.write(address); //Write here is allocate
             l1Cache.read(address);
@@ -121,11 +135,18 @@ public class CacheSimulater {
                         l2Cache.writeAndSetDirty(l1EvictAddress);
                     } else { //if l2 not hit on write
                         l2WriteMiss++;
+                        totalMemoryTraffic++;
                         Long l2Evict = l2Cache.evict(l1EvictAddress);
-                        if (l2Evict != null) {
-                            l2Writebacks++;
+                        if (l2Evict != null && ((l2Evict & 1L) != 1)) {
+                            Long l2EvictAddress = l2Evict >> 2;
+                            if ((l2Evict & 2L) != 0) { 
+                                l2Writebacks++;
+                                totalMemoryTraffic++;
+                            }
                             if (inclusion == 1) {
-                                l1Cache.invalid(l2Evict);
+                                if (l1Cache.invalid(l2EvictAddress)) {
+                                    totalMemoryTraffic++;
+                                }
                             }
                         }
                         l2Cache.writeAndSetDirty(l1EvictAddress);
@@ -137,14 +158,18 @@ public class CacheSimulater {
                     l2Cache.read(address);
                 } else {
                     l2ReadMiss++;
+                    totalMemoryTraffic++;
                     Long l2Evict = l2Cache.evict(address);
                     if (l2Evict != null && ((l2Evict & 1L) != 1)) {
                         Long l2EvictAddress = l2Evict >> 2;
-                        if ((l2Evict & 2L) == 1) {
+                        if ((l2Evict & 2L) != 0) {
                             l2Writebacks++;
+                            totalMemoryTraffic++;
                         }
                         if (inclusion == 1) {
-                            l1Cache.invalid(l2EvictAddress);
+                            if (l1Cache.invalid(l2EvictAddress)) {
+                                totalMemoryTraffic++;
+                            }
                         }
                     }
                     l2Cache.write(address);
@@ -152,7 +177,9 @@ public class CacheSimulater {
             } else {
                 if ((l1Evict != null) && (l1Evict & 2L) != 0) { //Init the write requres only when the evicted block is dirty
                         l1Writebacks++;
+                        totalMemoryTraffic++;
                 }
+                totalMemoryTraffic++;
             }
             l1Cache.writeAndSetDirty(address); //Write here is allocate
         }
@@ -164,7 +191,8 @@ public class CacheSimulater {
         System.out.println("b. number of L1 read misses:   " + l1ReadMiss);
         System.out.println("c. number of L1 writes:   " + l1Writes);
         System.out.println("d. number of L1 write misses:   " + l1WriteMiss);
-        System.out.println("e. L1 miss rate:    " + (l1ReadMiss + l1WriteMiss) / (double)(l1Reads + l1Writes));
+        System.out.printf("e. L1 miss rate:     %.6f", (l1ReadMiss + l1WriteMiss) / (double)(l1Reads + l1Writes));
+        System.out.println();
         System.out.println("f. number of L1 writebacks:    " + l1Writebacks);
         System.out.println("g. number of L2 reads:    " + l2Reads);
         System.out.println("h. number of L2 read misses:    " + l2ReadMiss);
@@ -174,10 +202,10 @@ public class CacheSimulater {
         if ((l2Reads + l2Writes) == 0) {
             System.out.println(0);
         } else {
-            System.out.println((l2ReadMiss + l2WriteMiss) / (l2Reads + l2Writes));
+            System.out.println(String.format("%.6f", (l2ReadMiss) / (double)(l2Reads)));
         }
         System.out.println("l. number of L2 writebacks:     " + l2Writebacks);
-        System.out.println("m. total memory traffic:      " + "N/A");
+        System.out.println("m. total memory traffic:      " + totalMemoryTraffic);
 
     }
 

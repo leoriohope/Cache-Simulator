@@ -5,7 +5,7 @@ import java.io.IOException;
 
 class sim_cache {
 	public static void main(String[] args) {
-		System.out.println("Simulation start!");
+		// System.out.println("Simulation start!");
 		if (args.length != 8) {
 			System.out.println("args format not match, please config 9 args!");
 			return;
@@ -44,13 +44,17 @@ class sim_cache {
 			BufferedReader b = new BufferedReader(new FileReader(f));
 			String readLine = "";
 			String[] operationArr;
-			System.out.println();
 			while ((readLine = b.readLine()) != null) {
 				// System.out.println(readLine);
 				// operationArr = readLine.split(" "); //["r", "FF2008CD"]
 				myCache.runSimulationByStep(readLine);
 			}
+			System.out.println("===== L1 contents =====");
 			myCache.l1Cache.printState();
+			if (myCache.l2Cache != null) {
+				System.out.println("===== L2 contents =====");
+				myCache.l2Cache.printState();
+			}
 			myCache.printStates();
 		} catch (IOException e) {
 			e.printStackTrace();

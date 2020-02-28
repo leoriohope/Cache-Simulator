@@ -1,0 +1,56 @@
+===== Simulator configuration =====
+BLOCKSIZE: 16
+L1_SIZE: 1024
+L1_ASSOC: 2
+L2_SIZE: 0
+L2_ASSOC: 0
+REPLACEMENT POLICY: FIFO
+INCLUSION PROPERTY: non-inclusive
+trace_file: vortex_trace.txt
+===== L1 contents =====
+Set     0:       3d81a6 D      20085c
+Set     1:       2006b8    20085c
+Set     2:       20085c    3d81a6 D  
+Set     3:       200072    3d81a6 D  
+Set     4:       2006fc    3d81a2
+Set     5:       2006fc    200700
+Set     6:       3d81a5    200704
+Set     7:       2006fc    200191
+Set     8:       3d81a6 D      200700
+Set     9:       200102    20085f
+Set     10:       20085f    3d81a6 D  
+Set     11:       2006fc D      20085f D  
+Set     12:       3d81a6 D      200191
+Set     13:       200192    200191
+Set     14:       200850    200191
+Set     15:       3d81a6 D      200191
+Set     16:       200102 D      3d81a5 D  
+Set     17:       3d81a5 D      200192
+Set     18:       3d81a5 D      2006c8
+Set     19:       2006cc    3d81a5 D  
+Set     20:       3d81a6 D      3d81a5 D  
+Set     21:       2006c8    200192
+Set     22:       200103 D      200101
+Set     23:       20087b D      200103
+Set     24:       2006b7    20087b D  
+Set     25:       200103    2006b7
+Set     26:       20022d    2006b7
+Set     27:       200103    3d81a5 D  
+Set     28:       3d81a6 D      3d81a5 D  
+Set     29:       2002cb    2002e1 D  
+Set     30:       200bb8    200190
+Set     31:       3d819b    3d81a5 D  
+===== Simulation results (raw) ===== 
+a. number of L1 reads:   70871
+b. number of L1 read misses:   8690
+c. number of L1 writes:   29129
+d. number of L1 write misses:   4565
+e. L1 miss rate:     0.132550
+f. number of L1 writebacks:    6255
+g. number of L2 reads:    0
+h. number of L2 read misses:    0
+i. number of L2 writes:     0
+j. number of L2 write misses:    0
+k. L2 miss rate:     0
+l. number of L2 writebacks:     0
+m. total memory traffic:      19510
