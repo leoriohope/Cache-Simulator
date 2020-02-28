@@ -74,14 +74,14 @@ public class FIFOCache implements Cache {
         Integer index = getIndex(address).intValue();
         // System.out.println(index);
         //Write when hit
-        for (int i = 0; i < assoc; i++) {
-            Long entry = cacheData[index][i];
-            if ((entry >> 2) == address) { //Find the first empty entry
-                cacheData[index][i] = (address << 2); // Don't make dirty here
-                // updateOrder(address);
-                return cacheData[index][i];
-            } 
-        }      
+        // for (int i = 0; i < assoc; i++) {
+        //     Long entry = cacheData[index][i];
+        //     if ((entry >> 2) == address) { //Find the first empty entry
+        //         cacheData[index][i] = (address << 2); // Don't make dirty here
+        //         // updateOrder(address);
+        //         return cacheData[index][i];
+        //     } 
+        // }      
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
@@ -101,8 +101,9 @@ public class FIFOCache implements Cache {
         // Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry >> 2) == address) { //Find the first empty entry
-                cacheData[index][i] = (address << 2); // Don't make dirty here
+            if ((getTag(entry >> 2)).equals(tag)) { //Find the first empty entry
+                // System.out.println("find a write hit");
+                cacheData[index][i] = (((address << 2) | 2L)); // Don't make dirty here
                 // updateOrder(address);
                 return cacheData[index][i];
             } 
@@ -110,7 +111,7 @@ public class FIFOCache implements Cache {
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
+            if ((entry & 1L) != 0 || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = ((address << 2) | 2L); // make dirty here
                 updateOrder(address);
                 return cacheData[index][i];
