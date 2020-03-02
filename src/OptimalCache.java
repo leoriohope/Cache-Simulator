@@ -31,7 +31,7 @@ public class OptimalCache implements Cache{
     Integer numOfWriteback = 0;
 
     // States for optimal preprocessing
-    Integer counter = -1; // Eachtime call isHit(), increment counter
+    public Integer counter = -1; // Eachtime call isHit(), increment counter
     ArrayList<Integer> entryList = new ArrayList<>();
     ArrayList<Integer> optIndex = new ArrayList<>();
 
@@ -84,17 +84,7 @@ public class OptimalCache implements Cache{
     @Override
     public Long write(Long address) {
         Long tag = getTag(address);
-        Integer index = getIndex(address).intValue();
-        // System.out.println(index);
-        //Write when hit
-        // for (int i = 0; i < assoc; i++) {
-        //     Long entry = cacheData[index][i];
-        //     if ((entry >> 2) == address) { //Find the first empty entry
-        //         cacheData[index][i] = (address << 2); // Don't make dirty here
-        //         // updateOrder(address);
-        //         return cacheData[index][i];
-        //     } 
-        // }      
+        Integer index = getIndex(address).intValue(); 
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
@@ -151,7 +141,7 @@ public class OptimalCache implements Cache{
         Integer maxIndex = 0;
         for (int i = 0; i < assoc; i++) {
             Integer currOrder = order[index][i];
-            if (currOrder.equals(2147483647)) {
+            if (currOrder == 2147483647) {
                 maxIndex = i;
                 break;
             }
@@ -169,6 +159,7 @@ public class OptimalCache implements Cache{
     @Override
     public Boolean isHit(Long address) {
         counter++;
+        // System.out.println("counter:  " + counter);
         Long tag = getTag(address);
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
@@ -284,7 +275,7 @@ public class OptimalCache implements Cache{
                 int j = i + 1;
                 for (; j < entryList.size(); j++) {
                     if (entryList.get(i).equals(entryList.get(j))) {
-                        optIndex.add(j - i);
+                        optIndex.add(j);
                         break;
                     }
                 }
@@ -304,12 +295,22 @@ public class OptimalCache implements Cache{
 
 
     public static void main(String[] args) {
-        OptimalCache myCache = new OptimalCache(1024, 2, 16, 0, 0, "gcc_trace.txt");
+        OptimalCache myCache = new OptimalCache(1024, 2, 16, 0, 0, "vortex_trace.txt");
         // System.out.println(myCache.getIndex(1073955232L));
         // System.out.println(myCache.getTag(1073955232L));
+        System.out.println(myCache.isHit(2063808508L));
+        System.out.println(myCache.writeAndSetDirty(2063808508L));
+        
+        System.out.println(myCache.isHit(2063808508L));
+        System.out.println(myCache.read(2063808508L));
 
-        // System.out.println(myCache.write(1073955232L));
-        // System.out.println(myCache.writeAndSetDirty(1073955232L));
+        System.out.println(myCache.isHit(2063812084L));
+        System.out.println(myCache.writeAndSetDirty(2063812084L));
+
+        System.out.println(myCache.evict(2063812084L));
+
+        // System.out.println(myCache.isHit(2063808508L));
+        // System.out.println(myCache.read(1073874784L));
         // System.out.println(myCache.writeAndSetDirty(14667688L));
         // // System.out.println(myCache.invalid(14667688L));
         // System.out.println("evicted: " + myCache.evict(14667688L));
@@ -319,8 +320,8 @@ public class OptimalCache implements Cache{
         // System.out.println(myCache.isHit(1073955232L));
 
 
-        // myCache.printState();
-        // myCache.printOrder();
+        myCache.printState();
+        myCache.printOrder();
 
 
         // System.out.println(myCache.numOfSet);

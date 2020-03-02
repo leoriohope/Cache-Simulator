@@ -40,7 +40,6 @@ public class CacheSimulater {
     public void runSimulationByStep(String operation) {
         Long address = getAddress(operation);
         Integer operand = getOperand(operation);
-
         if (operand == 0) {
             read(address);
         } else {
