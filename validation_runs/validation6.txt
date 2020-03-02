@@ -1,4 +1,4 @@
-L===== Simulator configuration =====
+===== Simulator configuration =====
 BLOCKSIZE:             16
 L1_SIZE:               1024
 L1_ASSOC:              2
@@ -181,5 +181,5 @@ h. number of L2 read misses:  5949
 i. number of L2 writes:       8690
 j. number of L2 write misses: 0
 k. L2 miss rate:              0.371627
-l. number of L2 writebacks:   4031
-m. total memory traffic:      9988
+l. number of L2 writebacks:   4036
+m. total memory traffic:      9993

@@ -86,7 +86,7 @@ public class LRUCache implements Cache {
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
+            if ((entry & 1L) == 1L || entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
                 return cacheData[index][i];
@@ -102,7 +102,7 @@ public class LRUCache implements Cache {
         // Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((getTag(entry >> 2)).equals(tag)) { //Find the first empty entry
+            if (((entry & 1L) == 0L) && ((getTag(entry >> 2)).equals(tag))) { //Find the first empty entry
                 // System.out.println("find a write hit");
                 cacheData[index][i] = (((address << 2) | 2L)); // Don't make dirty here
                 updateOrder(address);
@@ -174,10 +174,10 @@ public class LRUCache implements Cache {
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if (getTag(entry >> 2).equals(tag)) {
+            if (((entry & 1L) != 1L) && getTag(entry >> 2).equals(tag)) {
                 cacheData[index][i] |= 1L; // set the last bit to 1
                 order[index][i] = 0; // update the order either
-                if ((entry & 2L) == 1L) {
+                if ((entry & 2L) != 0) {
                     return true; // the invlided block is dirty
                 }
                 return false;

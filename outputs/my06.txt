@@ -182,4 +182,4 @@ i. number of L2 writes:     8690
 j. number of L2 write misses:    0
 k. L2 miss rate:     0.371627
 l. number of L2 writebacks:     4036
-m. total memory traffic:      9985
+m. total memory traffic:      9993
