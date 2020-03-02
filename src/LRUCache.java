@@ -24,7 +24,7 @@ public class LRUCache implements Cache {
     Double missRate = 0.0;
     Integer numOfWriteback = 0;
 
-    public LRUCache(Integer inputSize, Integer inputAssoc, Integer inputBlockSize, Integer inputReplacementPolicy, Integer inputInclusionProperty) {
+    public LRUCache(Integer inputSize, Integer inputAssoc, Integer inputBlockSize, Integer inputReplacementPolicy, Integer inputInclusionProperty, String trace) {
         size = inputSize;
         assoc = inputAssoc;
         blockSize = inputBlockSize;
@@ -249,7 +249,7 @@ public class LRUCache implements Cache {
 
 
     public static void main(String[] args) {
-        LRUCache myCache = new LRUCache(1024, 2, 16, 0, 0);
+        LRUCache myCache = new LRUCache(1024, 2, 16, 0, 0, "gcc_trace.txt");
         // System.out.println(myCache.getIndex(1073955232L));
         // System.out.println(myCache.getTag(1073955232L));
 

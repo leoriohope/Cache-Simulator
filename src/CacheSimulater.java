@@ -21,12 +21,12 @@ public class CacheSimulater {
     Integer totalMemoryTraffic = 0;
 
     
-    public CacheSimulater(Integer blockSize, Integer l1Size, Integer l1Assoc, Integer l2Size, Integer l2Assoc, Integer replacementPolicy, Integer inclusionProperty) {
+    public CacheSimulater(Integer blockSize, Integer l1Size, Integer l1Assoc, Integer l2Size, Integer l2Assoc, Integer replacementPolicy, Integer inclusionProperty, String trace) {
         CacheFactory cacheFactory = new CacheFactory();
 
-        l1Cache = cacheFactory.getCache(l1Size, l1Assoc, blockSize, replacementPolicy, inclusionProperty);
+        l1Cache = cacheFactory.getCache(l1Size, l1Assoc, blockSize, replacementPolicy, inclusionProperty, trace);
         if (l2Size != 0) {
-                l2Cache = cacheFactory.getCache(l2Size, l2Assoc, blockSize, replacementPolicy, inclusionProperty);
+                l2Cache = cacheFactory.getCache(l2Size, l2Assoc, blockSize, replacementPolicy, inclusionProperty, trace);
         }
         inclusion = inclusionProperty;
     }
@@ -233,7 +233,7 @@ public class CacheSimulater {
 
 
     public static void main(String[] args) {
-        CacheSimulater mySimulater = new CacheSimulater(16, 1024, 2, 0, 0, 1, 0);
+        CacheSimulater mySimulater = new CacheSimulater(16, 1024, 2, 0, 0, 1, 0, "gcc_trace.txt");
         mySimulater.runSimulationByStep("w 400341a0");
         mySimulater.runSimulationByStep("r dfcfa8");
         // System.out.println(mySimulater.getAddress("w dfcfa8"));

@@ -36,7 +36,7 @@ class sim_cache {
 
 
 		CacheSimulater myCache = new CacheSimulater(blockSize, l1Size, l1Assoc, l2Size, l2Assoc,
-				replacementPolicy, inclusionProperty);
+				replacementPolicy, inclusionProperty, trace);  
 
 		// Read trace
 		try {
