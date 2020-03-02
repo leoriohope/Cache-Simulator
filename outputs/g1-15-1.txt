@@ -1,0 +1,1048 @@
+===== Simulator configuration =====
+BLOCKSIZE: 32
+L1_SIZE: 32768
+L1_ASSOC: 1
+L2_SIZE: 0
+L2_ASSOC: 0
+REPLACEMENT POLICY: LRU
+INCLUSION PROPERTY: non-inclusive
+trace_file: gcc_trace.txt
+===== L1 contents =====
+Set     0:       8006 D  
+Set     1:       8006 D  
+Set     2:       8006 D  
+Set     3:       8006 D  
+Set     4:       8006 D  
+Set     5:       8006 D  
+Set     6:       8006 D  
+Set     7:       8006 D  
+Set     8:       8006 D  
+Set     9:       8006 D  
+Set     10:       8006 D  
+Set     11:       8006 D  
+Set     12:       8006 D  
+Set     13:       8006 D  
+Set     14:       8006 D  
+Set     15:       8006 D  
+Set     16:       8006 D  
+Set     17:       8007 D  
+Set     18:       8009
+Set     19:       8007 D  
+Set     20:       8006 D  
+Set     21:       8007 D  
+Set     22:       8006 D  
+Set     23:       8006 D  
+Set     24:       8006 D  
+Set     25:       8006 D  
+Set     26:       8006 D  
+Set     27:       8006 D  
+Set     28:       8006 D  
+Set     29:       8006 D  
+Set     30:       8007
+Set     31:       8006 D  
+Set     32:       8006 D  
+Set     33:       8006 D  
+Set     34:       8006 D  
+Set     35:       8006 D  
+Set     36:       8006 D  
+Set     37:       8006 D  
+Set     38:       8006 D  
+Set     39:       8006 D  
+Set     40:       8006 D  
+Set     41:       8006 D  
+Set     42:       8006 D  
+Set     43:       8006 D  
+Set     44:       8006 D  
+Set     45:       8006 D  
+Set     46:       8006 D  
+Set     47:       8006 D  
+Set     48:       8006 D  
+Set     49:       8006 D  
+Set     50:       8006 D  
+Set     51:       8006 D  
+Set     52:       8006 D  
+Set     53:       8006 D  
+Set     54:       8006 D  
+Set     55:       8006 D  
+Set     56:       8006 D  
+Set     57:       8006 D  
+Set     58:       8006 D  
+Set     59:       8006 D  
+Set     60:       8006 D  
+Set     61:       8006 D  
+Set     62:       8006 D  
+Set     63:       8006 D  
+Set     64:       8006 D  
+Set     65:       8006 D  
+Set     66:       8006 D  
+Set     67:       8006 D  
+Set     68:       8006 D  
+Set     69:       8006 D  
+Set     70:       8006 D  
+Set     71:       8006 D  
+Set     72:       8006 D  
+Set     73:       8006 D  
+Set     74:       8006 D  
+Set     75:       8006 D  
+Set     76:       8006 D  
+Set     77:       8006 D  
+Set     78:       8006 D  
+Set     79:       8006 D  
+Set     80:       8006 D  
+Set     81:       8006 D  
+Set     82:       8006 D  
+Set     83:       8006 D  
+Set     84:       8006 D  
+Set     85:       8006 D  
+Set     86:       8006 D  
+Set     87:       8006 D  
+Set     88:       8006 D  
+Set     89:       8006 D  
+Set     90:       8006 D  
+Set     91:       8006 D  
+Set     92:       8006 D  
+Set     93:       8006 D  
+Set     94:       8006 D  
+Set     95:       8006 D  
+Set     96:       8006 D  
+Set     97:       8006 D  
+Set     98:       8006 D  
+Set     99:       8006 D  
+Set     100:       8006 D  
+Set     101:       8006 D  
+Set     102:       8006 D  
+Set     103:       8006 D  
+Set     104:       8006 D  
+Set     105:       8006 D  
+Set     106:       8006 D  
+Set     107:       8006 D  
+Set     108:       8006 D  
+Set     109:       8006 D  
+Set     110:       8006 D  
+Set     111:       8006 D  
+Set     112:       8006 D  
+Set     113:       8006 D  
+Set     114:       8006 D  
+Set     115:       8006 D  
+Set     116:       8006 D  
+Set     117:       8006 D  
+Set     118:       8006 D  
+Set     119:       8006 D  
+Set     120:       8006 D  
+Set     121:       8006 D  
+Set     122:       8006 D  
+Set     123:       8006 D  
+Set     124:       8006 D  
+Set     125:       8006 D  
+Set     126:       8006 D  
+Set     127:       8006 D  
+Set     128:       8006 D  
+Set     129:       8006 D  
+Set     130:       8006 D  
+Set     131:       8006 D  
+Set     132:       8006 D  
+Set     133:       8006 D  
+Set     134:       8006 D  
+Set     135:       8006 D  
+Set     136:       8006 D  
+Set     137:       8006 D  
+Set     138:       8006 D  
+Set     139:       8006 D  
+Set     140:       8006 D  
+Set     141:       8006 D  
+Set     142:       8006 D  
+Set     143:       8006 D  
+Set     144:       8006 D  
+Set     145:       8006 D  
+Set     146:       8005
+Set     147:       8006 D  
+Set     148:       8005
+Set     149:       8000
+Set     150:       8000
+Set     151:       8000
+Set     152:       8000
+Set     153:       8000
+Set     154:       8000
+Set     155:       8000
+Set     156:       8006 D  
+Set     157:       800a D  
+Set     158:       800a D  
+Set     159:       800a D  
+Set     160:       8006
+Set     161:       800a D  
+Set     162:       8006
+Set     163:       8006
+Set     164:       8006
+Set     165:       8006
+Set     166:       8006
+Set     167:       800a D  
+Set     168:       800a D  
+Set     169:       800a D  
+Set     170:       800a D  
+Set     171:       800a D  
+Set     172:       8006 D  
+Set     173:       800a D  
+Set     174:       800a D  
+Set     175:       800a D  
+Set     176:       800a D  
+Set     177:       800a D  
+Set     178:       800a D  
+Set     179:       800a D  
+Set     180:       800a D  
+Set     181:       800a D  
+Set     182:       800a D  
+Set     183:       800a D  
+Set     184:       800a D  
+Set     185:       800a D  
+Set     186:       800a D  
+Set     187:       800a D  
+Set     188:       800a D  
+Set     189:       800a D  
+Set     190:       800a D  
+Set     191:       800a D  
+Set     192:       800a D  
+Set     193:       800a D  
+Set     194:       800a D  
+Set     195:       800a D  
+Set     196:       800a D  
+Set     197:       800a D  
+Set     198:       800a D  
+Set     199:       800a D  
+Set     200:       800a D  
+Set     201:       800a D  
+Set     202:       800a D  
+Set     203:       800a D  
+Set     204:       800a D  
+Set     205:       800a D  
+Set     206:       800a D  
+Set     207:       800a D  
+Set     208:       800a D  
+Set     209:       800a D  
+Set     210:       800a D  
+Set     211:       800a D  
+Set     212:       800a D  
+Set     213:       800a D  
+Set     214:       800a D  
+Set     215:       800a D  
+Set     216:       800a D  
+Set     217:       800a D  
+Set     218:       800a D  
+Set     219:       800a D  
+Set     220:       800a D  
+Set     221:       800a D  
+Set     222:       8006 D  
+Set     223:       8006 D  
+Set     224:       800a D  
+Set     225:       800a D  
+Set     226:       800a D  
+Set     227:       800a D  
+Set     228:       800a D  
+Set     229:       800a D  
+Set     230:       1bf
+Set     231:       0
+Set     232:       800a D  
+Set     233:       800a D  
+Set     234:       800a D  
+Set     235:       800a D  
+Set     236:       800a D  
+Set     237:       800a D  
+Set     238:       800a D  
+Set     239:       800a D  
+Set     240:       8007
+Set     241:       800a D  
+Set     242:       846a
+Set     243:       0
+Set     244:       8006 D  
+Set     245:       8006 D  
+Set     246:       8007 D  
+Set     247:       0
+Set     248:       1bf
+Set     249:       0
+Set     250:       8006 D  
+Set     251:       8006 D  
+Set     252:       8006 D  
+Set     253:       8006 D  
+Set     254:       8006 D  
+Set     255:       0
+Set     256:       0
+Set     257:       0
+Set     258:       0
+Set     259:       0
+Set     260:       0
+Set     261:       0
+Set     262:       8006 D  
+Set     263:       8000
+Set     264:       8000
+Set     265:       8000
+Set     266:       8000
+Set     267:       8006 D  
+Set     268:       0
+Set     269:       0
+Set     270:       8007 D  
+Set     271:       8007 D  
+Set     272:       8007 D  
+Set     273:       8007 D  
+Set     274:       8007 D  
+Set     275:       8007 D  
+Set     276:       8006 D  
+Set     277:       1bf
+Set     278:       1bf
+Set     279:       0
+Set     280:       8006 D  
+Set     281:       8006 D  
+Set     282:       8006 D  
+Set     283:       8006 D  
+Set     284:       8000 D  
+Set     285:       8007 D  
+Set     286:       0
+Set     287:       8007 D  
+Set     288:       8006 D  
+Set     289:       0
+Set     290:       8006 D  
+Set     291:       8000
+Set     292:       8006 D  
+Set     293:       8006 D  
+Set     294:       8006 D  
+Set     295:       0
+Set     296:       8006 D  
+Set     297:       8006 D  
+Set     298:       0
+Set     299:       0
+Set     300:       8005 D  
+Set     301:       8005
+Set     302:       8000
+Set     303:       8000
+Set     304:       0
+Set     305:       8005 D  
+Set     306:       8008
+Set     307:       0
+Set     308:       0
+Set     309:       8006 D  
+Set     310:       0
+Set     311:       1bf
+Set     312:       0
+Set     313:       8006 D  
+Set     314:       0
+Set     315:       0
+Set     316:       8005 D  
+Set     317:       0
+Set     318:       8005
+Set     319:       8007 D  
+Set     320:       8005 D  
+Set     321:       0
+Set     322:       8000
+Set     323:       0
+Set     324:       8008
+Set     325:       0
+Set     326:       0
+Set     327:       0
+Set     328:       0
+Set     329:       0
+Set     330:       8008 D  
+Set     331:       8008 D  
+Set     332:       8008 D  
+Set     333:       8008 D  
+Set     334:       8008 D  
+Set     335:       8008 D  
+Set     336:       8008 D  
+Set     337:       8008 D  
+Set     338:       8008 D  
+Set     339:       8008 D  
+Set     340:       8008 D  
+Set     341:       8008 D  
+Set     342:       8008 D  
+Set     343:       8008 D  
+Set     344:       8008 D  
+Set     345:       8008 D  
+Set     346:       8008 D  
+Set     347:       8008 D  
+Set     348:       8008 D  
+Set     349:       8008 D  
+Set     350:       8008 D  
+Set     351:       8008 D  
+Set     352:       8008 D  
+Set     353:       8008 D  
+Set     354:       8008 D  
+Set     355:       8008 D  
+Set     356:       8008 D  
+Set     357:       8008 D  
+Set     358:       8008 D  
+Set     359:       8008 D  
+Set     360:       8008 D  
+Set     361:       8008 D  
+Set     362:       8008 D  
+Set     363:       8008 D  
+Set     364:       8008 D  
+Set     365:       8008 D  
+Set     366:       8008 D  
+Set     367:       8008 D  
+Set     368:       800a D  
+Set     369:       800a D  
+Set     370:       800a D  
+Set     371:       800a D  
+Set     372:       800a D  
+Set     373:       800a D  
+Set     374:       800a D  
+Set     375:       800a D  
+Set     376:       800a D  
+Set     377:       800a D  
+Set     378:       800a D  
+Set     379:       800a D  
+Set     380:       800a D  
+Set     381:       800a D  
+Set     382:       800a D  
+Set     383:       8006 D  
+Set     384:       8006 D  
+Set     385:       8006 D  
+Set     386:       8006 D  
+Set     387:       800a D  
+Set     388:       800a D  
+Set     389:       800a D  
+Set     390:       800a D  
+Set     391:       800a D  
+Set     392:       800a D  
+Set     393:       800a D  
+Set     394:       800a D  
+Set     395:       800a D  
+Set     396:       800a D  
+Set     397:       800a D  
+Set     398:       800a D  
+Set     399:       800a D  
+Set     400:       800a D  
+Set     401:       800a D  
+Set     402:       800a D  
+Set     403:       800a D  
+Set     404:       800a D  
+Set     405:       800a D  
+Set     406:       800a D  
+Set     407:       800a D  
+Set     408:       800a D  
+Set     409:       800a D  
+Set     410:       800a D  
+Set     411:       800a D  
+Set     412:       800a D  
+Set     413:       800a D  
+Set     414:       800a D  
+Set     415:       8008 D  
+Set     416:       800a D  
+Set     417:       800a D  
+Set     418:       800a D  
+Set     419:       800a D  
+Set     420:       800a D  
+Set     421:       800a D  
+Set     422:       800a D  
+Set     423:       8008 D  
+Set     424:       800a D  
+Set     425:       800a D  
+Set     426:       800a D  
+Set     427:       800a D  
+Set     428:       800a D  
+Set     429:       800a D  
+Set     430:       800a D  
+Set     431:       800a D  
+Set     432:       800a D  
+Set     433:       800a D  
+Set     434:       800a D  
+Set     435:       800a D  
+Set     436:       800a D  
+Set     437:       800a D  
+Set     438:       8008 D  
+Set     439:       800a D  
+Set     440:       800a D  
+Set     441:       800a D  
+Set     442:       800a D  
+Set     443:       800a D  
+Set     444:       800a D  
+Set     445:       800a D  
+Set     446:       800a D  
+Set     447:       800a D  
+Set     448:       800a D  
+Set     449:       800a D  
+Set     450:       800a D  
+Set     451:       800a D  
+Set     452:       800a D  
+Set     453:       800a D  
+Set     454:       800a D  
+Set     455:       800a D  
+Set     456:       f606 D  
+Set     457:       f606 D  
+Set     458:       800a D  
+Set     459:       f606 D  
+Set     460:       800a D  
+Set     461:       800a D  
+Set     462:       800a D  
+Set     463:       800a D  
+Set     464:       f606 D  
+Set     465:       800a D  
+Set     466:       800a D  
+Set     467:       800a D  
+Set     468:       800a D  
+Set     469:       800a D  
+Set     470:       800a D  
+Set     471:       800a D  
+Set     472:       800a D  
+Set     473:       800a D  
+Set     474:       800a D  
+Set     475:       800a D  
+Set     476:       800a D  
+Set     477:       800a D  
+Set     478:       800a D  
+Set     479:       800a D  
+Set     480:       800a D  
+Set     481:       800a D  
+Set     482:       800a D  
+Set     483:       800a D  
+Set     484:       800a D  
+Set     485:       800a D  
+Set     486:       800a D  
+Set     487:       800a D  
+Set     488:       800a D  
+Set     489:       800a D  
+Set     490:       800a D  
+Set     491:       800a D  
+Set     492:       800a D  
+Set     493:       800a D  
+Set     494:       800a D  
+Set     495:       800a D  
+Set     496:       800a D  
+Set     497:       800a D  
+Set     498:       800a D  
+Set     499:       800a D  
+Set     500:       800a D  
+Set     501:       800a D  
+Set     502:       800a D  
+Set     503:       800a D  
+Set     504:       8006 D  
+Set     505:       800a D  
+Set     506:       800a D  
+Set     507:       800a D  
+Set     508:       800a D  
+Set     509:       800a D  
+Set     510:       800a D  
+Set     511:       800a D  
+Set     512:       800a D  
+Set     513:       800a D  
+Set     514:       800a D  
+Set     515:       800a D  
+Set     516:       800a D  
+Set     517:       800a D  
+Set     518:       800a D  
+Set     519:       800a D  
+Set     520:       800a D  
+Set     521:       800a D  
+Set     522:       800a D  
+Set     523:       800a D  
+Set     524:       800a D  
+Set     525:       800a D  
+Set     526:       800a D  
+Set     527:       800a D  
+Set     528:       800a D  
+Set     529:       800a D  
+Set     530:       800a D  
+Set     531:       800a D  
+Set     532:       800a D  
+Set     533:       800a D  
+Set     534:       800a D  
+Set     535:       800a D  
+Set     536:       800a D  
+Set     537:       800a D  
+Set     538:       800a D  
+Set     539:       800a D  
+Set     540:       800a D  
+Set     541:       800a D  
+Set     542:       800a D  
+Set     543:       800a D  
+Set     544:       800a D  
+Set     545:       800a D  
+Set     546:       800a D  
+Set     547:       800a D  
+Set     548:       800a D  
+Set     549:       800a D  
+Set     550:       800a D  
+Set     551:       800a D  
+Set     552:       800a D  
+Set     553:       800a D  
+Set     554:       800a D  
+Set     555:       800a D  
+Set     556:       800a D  
+Set     557:       8008 D  
+Set     558:       800a D  
+Set     559:       8008 D  
+Set     560:       8008 D  
+Set     561:       800a D  
+Set     562:       8008 D  
+Set     563:       800a D  
+Set     564:       800a D  
+Set     565:       800a D  
+Set     566:       8008 D  
+Set     567:       800a D  
+Set     568:       800a D  
+Set     569:       800a D  
+Set     570:       800a D  
+Set     571:       800a D  
+Set     572:       800a D  
+Set     573:       800a D  
+Set     574:       800a D  
+Set     575:       800a D  
+Set     576:       800a D  
+Set     577:       800a D  
+Set     578:       800a D  
+Set     579:       800a D  
+Set     580:       800a D  
+Set     581:       800a D  
+Set     582:       8007 D  
+Set     583:       800a D  
+Set     584:       800a D  
+Set     585:       800a D  
+Set     586:       800a D  
+Set     587:       800a D  
+Set     588:       800a D  
+Set     589:       800a D  
+Set     590:       800a D  
+Set     591:       800a D  
+Set     592:       800a D  
+Set     593:       800a D  
+Set     594:       800a D  
+Set     595:       800a D  
+Set     596:       800a D  
+Set     597:       800a D  
+Set     598:       800a D  
+Set     599:       800a D  
+Set     600:       800a D  
+Set     601:       800a D  
+Set     602:       800a D  
+Set     603:       800a D  
+Set     604:       800a D  
+Set     605:       800a D  
+Set     606:       800a D  
+Set     607:       800a D  
+Set     608:       800a D  
+Set     609:       800a D  
+Set     610:       800a D  
+Set     611:       800a D  
+Set     612:       800a D  
+Set     613:       800a D  
+Set     614:       800a D  
+Set     615:       800a D  
+Set     616:       800a D  
+Set     617:       800a D  
+Set     618:       800a D  
+Set     619:       800a D  
+Set     620:       800a D  
+Set     621:       800a D  
+Set     622:       800a D  
+Set     623:       800a D  
+Set     624:       800a D  
+Set     625:       800a D  
+Set     626:       800a D  
+Set     627:       800a D  
+Set     628:       800a D  
+Set     629:       800a D  
+Set     630:       800a D  
+Set     631:       800a D  
+Set     632:       800a D  
+Set     633:       800a D  
+Set     634:       800a D  
+Set     635:       8003
+Set     636:       8003
+Set     637:       8003
+Set     638:       8006 D  
+Set     639:       8006 D  
+Set     640:       800a D  
+Set     641:       800a D  
+Set     642:       800a D  
+Set     643:       800a D  
+Set     644:       800a D  
+Set     645:       800a D  
+Set     646:       800a D  
+Set     647:       800a D  
+Set     648:       800a D  
+Set     649:       800a D  
+Set     650:       800a D  
+Set     651:       800a D  
+Set     652:       800a D  
+Set     653:       800a D  
+Set     654:       8006 D  
+Set     655:       800a D  
+Set     656:       800a D  
+Set     657:       800a D  
+Set     658:       800a D  
+Set     659:       800a D  
+Set     660:       8005 D  
+Set     661:       800a D  
+Set     662:       800a D  
+Set     663:       800a D  
+Set     664:       800a D  
+Set     665:       800a D  
+Set     666:       800a D  
+Set     667:       800a D  
+Set     668:       800a D  
+Set     669:       800a D  
+Set     670:       800a D  
+Set     671:       8006 D  
+Set     672:       800a D  
+Set     673:       800a D  
+Set     674:       800a D  
+Set     675:       800a D  
+Set     676:       800a D  
+Set     677:       800a D  
+Set     678:       800a D  
+Set     679:       800a D  
+Set     680:       8006
+Set     681:       8006
+Set     682:       8006
+Set     683:       8006
+Set     684:       8006
+Set     685:       800a D  
+Set     686:       800a D  
+Set     687:       800a D  
+Set     688:       8006
+Set     689:       800a D  
+Set     690:       800a D  
+Set     691:       800a D  
+Set     692:       800a D  
+Set     693:       800a D  
+Set     694:       800a D  
+Set     695:       800a D  
+Set     696:       800a D  
+Set     697:       800a D  
+Set     698:       8006 D  
+Set     699:       8006
+Set     700:       8006
+Set     701:       8006 D  
+Set     702:       800a D  
+Set     703:       800a D  
+Set     704:       800a D  
+Set     705:       800a D  
+Set     706:       800a D  
+Set     707:       8006 D  
+Set     708:       8006 D  
+Set     709:       800a D  
+Set     710:       8006 D  
+Set     711:       8006
+Set     712:       800a D  
+Set     713:       800a D  
+Set     714:       800a D  
+Set     715:       800a D  
+Set     716:       800a D  
+Set     717:       800a D  
+Set     718:       800a D  
+Set     719:       800a D  
+Set     720:       800a D  
+Set     721:       800a D  
+Set     722:       800a D  
+Set     723:       800a D  
+Set     724:       8006 D  
+Set     725:       8006
+Set     726:       8006 D  
+Set     727:       800a D  
+Set     728:       800a D  
+Set     729:       800a D  
+Set     730:       800a D  
+Set     731:       800a D  
+Set     732:       8006 D  
+Set     733:       800a D  
+Set     734:       8006 D  
+Set     735:       8006 D  
+Set     736:       800a D  
+Set     737:       800a D  
+Set     738:       800a D  
+Set     739:       800a D  
+Set     740:       800a D  
+Set     741:       800a D  
+Set     742:       800a D  
+Set     743:       800a D  
+Set     744:       800a D  
+Set     745:       800a D  
+Set     746:       8006
+Set     747:       800a D  
+Set     748:       800a D  
+Set     749:       800a D  
+Set     750:       800a D  
+Set     751:       800a D  
+Set     752:       800a D  
+Set     753:       800a D  
+Set     754:       800a D  
+Set     755:       800a D  
+Set     756:       800a D  
+Set     757:       800a D  
+Set     758:       800a D  
+Set     759:       8006 D  
+Set     760:       800a D  
+Set     761:       800a D  
+Set     762:       800a D  
+Set     763:       800a D  
+Set     764:       8006 D  
+Set     765:       8006 D  
+Set     766:       800a D  
+Set     767:       800a D  
+Set     768:       800a D  
+Set     769:       800a D  
+Set     770:       800a D  
+Set     771:       8006 D  
+Set     772:       800a D  
+Set     773:       800a D  
+Set     774:       800a D  
+Set     775:       800a D  
+Set     776:       800a D  
+Set     777:       800a D  
+Set     778:       800a D  
+Set     779:       800a D  
+Set     780:       800a D  
+Set     781:       800a D  
+Set     782:       800a D  
+Set     783:       800a D  
+Set     784:       800a D  
+Set     785:       800a D  
+Set     786:       800a D  
+Set     787:       800a D  
+Set     788:       800a D  
+Set     789:       8007 D  
+Set     790:       8007 D  
+Set     791:       8007 D  
+Set     792:       8007 D  
+Set     793:       8007 D  
+Set     794:       8007 D  
+Set     795:       8007 D  
+Set     796:       8007 D  
+Set     797:       8007 D  
+Set     798:       8007 D  
+Set     799:       8007 D  
+Set     800:       8007 D  
+Set     801:       8007 D  
+Set     802:       8007 D  
+Set     803:       8007 D  
+Set     804:       8007 D  
+Set     805:       8006 D  
+Set     806:       8006 D  
+Set     807:       8006 D  
+Set     808:       8006 D  
+Set     809:       8006 D  
+Set     810:       8006 D  
+Set     811:       8006 D  
+Set     812:       8007 D  
+Set     813:       8006 D  
+Set     814:       8006 D  
+Set     815:       8006 D  
+Set     816:       8007 D  
+Set     817:       8007 D  
+Set     818:       8007 D  
+Set     819:       8007 D  
+Set     820:       8007 D  
+Set     821:       8009 D  
+Set     822:       8009 D  
+Set     823:       8009
+Set     824:       8008 D  
+Set     825:       8009 D  
+Set     826:       8009 D  
+Set     827:       8009 D  
+Set     828:       8009 D  
+Set     829:       8006 D  
+Set     830:       8006 D  
+Set     831:       8009 D  
+Set     832:       8007 D  
+Set     833:       8006 D  
+Set     834:       8009 D  
+Set     835:       8009 D  
+Set     836:       8009 D  
+Set     837:       8009 D  
+Set     838:       8009 D  
+Set     839:       8009 D  
+Set     840:       8009 D  
+Set     841:       8009 D  
+Set     842:       8009 D  
+Set     843:       8009 D  
+Set     844:       8007 D  
+Set     845:       8009 D  
+Set     846:       8009 D  
+Set     847:       8009 D  
+Set     848:       8009 D  
+Set     849:       8009 D  
+Set     850:       8009 D  
+Set     851:       8009 D  
+Set     852:       8009 D  
+Set     853:       8009 D  
+Set     854:       8009 D  
+Set     855:       8009 D  
+Set     856:       8009 D  
+Set     857:       8006 D  
+Set     858:       8006 D  
+Set     859:       8006 D  
+Set     860:       8006 D  
+Set     861:       8007 D  
+Set     862:       8007 D  
+Set     863:       8007 D  
+Set     864:       8009
+Set     865:       8009 D  
+Set     866:       8007 D  
+Set     867:       8009
+Set     868:       8007 D  
+Set     869:       8009
+Set     870:       8007 D  
+Set     871:       8007 D  
+Set     872:       8009 D  
+Set     873:       8009 D  
+Set     874:       8009 D  
+Set     875:       8009 D  
+Set     876:       8009 D  
+Set     877:       8009 D  
+Set     878:       8006 D  
+Set     879:       8006 D  
+Set     880:       8009 D  
+Set     881:       8006 D  
+Set     882:       8007 D  
+Set     883:       8009 D  
+Set     884:       8009 D  
+Set     885:       8009 D  
+Set     886:       8009 D  
+Set     887:       8009 D  
+Set     888:       8007 D  
+Set     889:       8003
+Set     890:       8003
+Set     891:       8009 D  
+Set     892:       8009 D  
+Set     893:       8003
+Set     894:       8003
+Set     895:       8009 D  
+Set     896:       8009 D  
+Set     897:       8007 D  
+Set     898:       8009 D  
+Set     899:       8009 D  
+Set     900:       8003
+Set     901:       8003
+Set     902:       8009 D  
+Set     903:       8009 D  
+Set     904:       8003
+Set     905:       8009 D  
+Set     906:       8009 D  
+Set     907:       8009 D  
+Set     908:       8003
+Set     909:       8009 D  
+Set     910:       8009 D  
+Set     911:       8007 D  
+Set     912:       8009 D  
+Set     913:       8009 D  
+Set     914:       8009 D  
+Set     915:       8009 D  
+Set     916:       8003
+Set     917:       8009 D  
+Set     918:       8003
+Set     919:       8003
+Set     920:       8003
+Set     921:       8003
+Set     922:       8009 D  
+Set     923:       8009 D  
+Set     924:       8005 D  
+Set     925:       8009 D  
+Set     926:       8009 D  
+Set     927:       8009 D  
+Set     928:       8005 D  
+Set     929:       8009 D  
+Set     930:       8009 D  
+Set     931:       8005 D  
+Set     932:       8005 D  
+Set     933:       8005
+Set     934:       8009 D  
+Set     935:       8003
+Set     936:       8003
+Set     937:       8003
+Set     938:       8003
+Set     939:       8004
+Set     940:       8004
+Set     941:       8004
+Set     942:       8004
+Set     943:       8004
+Set     944:       8009 D  
+Set     945:       8004
+Set     946:       8004
+Set     947:       8009 D  
+Set     948:       8009 D  
+Set     949:       8009 D  
+Set     950:       8009 D  
+Set     951:       8006 D  
+Set     952:       8005 D  
+Set     953:       8005 D  
+Set     954:       8008
+Set     955:       8005 D  
+Set     956:       8005 D  
+Set     957:       8005 D  
+Set     958:       8005 D  
+Set     959:       8005 D  
+Set     960:       8005 D  
+Set     961:       8005 D  
+Set     962:       8005 D  
+Set     963:       8006 D  
+Set     964:       8005 D  
+Set     965:       8005 D  
+Set     966:       8006 D  
+Set     967:       8005 D  
+Set     968:       8007 D  
+Set     969:       8005 D  
+Set     970:       8007 D  
+Set     971:       8005 D  
+Set     972:       8005 D  
+Set     973:       8005 D  
+Set     974:       8007 D  
+Set     975:       8007 D  
+Set     976:       8007 D  
+Set     977:       8007 D  
+Set     978:       8007 D  
+Set     979:       8006 D  
+Set     980:       8007 D  
+Set     981:       8005 D  
+Set     982:       8005 D  
+Set     983:       8005 D  
+Set     984:       8005 D  
+Set     985:       8007 D  
+Set     986:       8005 D  
+Set     987:       8005 D  
+Set     988:       8006 D  
+Set     989:       8006 D  
+Set     990:       8007 D  
+Set     991:       8005 D  
+Set     992:       8005 D  
+Set     993:       8005 D  
+Set     994:       8005 D  
+Set     995:       8005 D  
+Set     996:       8005 D  
+Set     997:       8005 D  
+Set     998:       8007 D  
+Set     999:       8007 D  
+Set     1000:       8007 D  
+Set     1001:       8007 D  
+Set     1002:       8005 D  
+Set     1003:       8005 D  
+Set     1004:       8007 D  
+Set     1005:       8007 D  
+Set     1006:       8005 D  
+Set     1007:       8005 D  
+Set     1008:       8005 D  
+Set     1009:       8005 D  
+Set     1010:       8005 D  
+Set     1011:       8005 D  
+Set     1012:       8008
+Set     1013:       8008
+Set     1014:       8008
+Set     1015:       8008
+Set     1016:       8008
+Set     1017:       8008
+Set     1018:       8008
+Set     1019:       8008
+Set     1020:       8008
+Set     1021:       8005 D  
+Set     1022:       8005 D  
+Set     1023:       8005 D  
+===== Simulation results (raw) ===== 
+a. number of L1 reads:   63640
+b. number of L1 read misses:   1356
+c. number of L1 writes:   36360
+d. number of L1 write misses:   2412
+e. L1 miss rate:     0.037680
+f. number of L1 writebacks:    1696
+g. number of L2 reads:    0
+h. number of L2 read misses:    0
+i. number of L2 writes:     0
+j. number of L2 write misses:    0
+k. L2 miss rate:     0
+l. number of L2 writebacks:     0
+m. total memory traffic:      5464

@@ -1,0 +1,152 @@
+===== Simulator configuration =====
+BLOCKSIZE: 32
+L1_SIZE: 4096
+L1_ASSOC: 1
+L2_SIZE: 0
+L2_ASSOC: 0
+REPLACEMENT POLICY: LRU
+INCLUSION PROPERTY: non-inclusive
+trace_file: gcc_trace.txt
+===== L1 contents =====
+Set     0:       40033 D  
+Set     1:       40033 D  
+Set     2:       40033 D  
+Set     3:       40036 D  
+Set     4:       4001f
+Set     5:       40056 D  
+Set     6:       40056 D  
+Set     7:       40056 D  
+Set     8:       40056 D  
+Set     9:       40056 D  
+Set     10:       40056 D  
+Set     11:       40056 D  
+Set     12:       4001f
+Set     13:       40056 D  
+Set     14:       40035 D  
+Set     15:       4003f D  
+Set     16:       4003a D  
+Set     17:       40038 D  
+Set     18:       40048
+Set     19:       40038 D  
+Set     20:       4001f
+Set     21:       40001
+Set     22:       40001
+Set     23:       40001
+Set     24:       40001
+Set     25:       40001
+Set     26:       40001
+Set     27:       40001
+Set     28:       40031 D  
+Set     29:       4003a D  
+Set     30:       40038
+Set     31:       40035 D  
+Set     32:       40031
+Set     33:       40054 D  
+Set     34:       40031
+Set     35:       40031
+Set     36:       4002f D  
+Set     37:       4002f
+Set     38:       40031
+Set     39:       4001f
+Set     40:       4001f
+Set     41:       4001f
+Set     42:       4001f
+Set     43:       40027
+Set     44:       4003e
+Set     45:       40027
+Set     46:       40027
+Set     47:       40027
+Set     48:       40035
+Set     49:       4002a D  
+Set     50:       40044 D  
+Set     51:       40051 D  
+Set     52:       4003e D  
+Set     53:       40051 D  
+Set     54:       40044 D  
+Set     55:       40037 D  
+Set     56:       4002f D  
+Set     57:       4002f D  
+Set     58:       40035 D  
+Set     59:       40035
+Set     60:       40035
+Set     61:       40036 D  
+Set     62:       40051 D  
+Set     63:       40051 D  
+Set     64:       4003e D  
+Set     65:       40036 D  
+Set     66:       40051 D  
+Set     67:       40035 D  
+Set     68:       40051 D  
+Set     69:       40051 D  
+Set     70:       40035 D  
+Set     71:       40035
+Set     72:       7b033 D  
+Set     73:       7b033 D  
+Set     74:       40042 D  
+Set     75:       40042 D  
+Set     76:       40051 D  
+Set     77:       40051 D  
+Set     78:       40051 D  
+Set     79:       40051 D  
+Set     80:       40051 D  
+Set     81:       40051 D  
+Set     82:       40051 D  
+Set     83:       40051 D  
+Set     84:       40051 D  
+Set     85:       40051 D  
+Set     86:       40051 D  
+Set     87:       40051 D  
+Set     88:       40051 D  
+Set     89:       40051 D  
+Set     90:       40051 D  
+Set     91:       40051 D  
+Set     92:       40051 D  
+Set     93:       40051 D  
+Set     94:       40031 D  
+Set     95:       40031 D  
+Set     96:       40051 D  
+Set     97:       40051 D  
+Set     98:       40051 D  
+Set     99:       40051 D  
+Set     100:       40051 D  
+Set     101:       40051 D  
+Set     102:       40055 D  
+Set     103:       4003e D  
+Set     104:       40055 D  
+Set     105:       40054 D  
+Set     106:       40035
+Set     107:       40054 D  
+Set     108:       40054 D  
+Set     109:       4003f D  
+Set     110:       40055 D  
+Set     111:       40055 D  
+Set     112:       40039
+Set     113:       40055 D  
+Set     114:       4003e D  
+Set     115:       40055 D  
+Set     116:       40031 D  
+Set     117:       40047
+Set     118:       40047
+Set     119:       40047
+Set     120:       40047
+Set     121:       40047
+Set     122:       40047
+Set     123:       40047
+Set     124:       40031 D  
+Set     125:       40035 D  
+Set     126:       40034 D  
+Set     127:       40032 D  
+===== Simulation results (raw) ===== 
+a. number of L1 reads:   63640
+b. number of L1 read misses:   5883
+c. number of L1 writes:   36360
+d. number of L1 write misses:   4134
+e. L1 miss rate:     0.100170
+f. number of L1 writebacks:    4675
+g. number of L2 reads:    0
+h. number of L2 read misses:    0
+i. number of L2 writes:     0
+j. number of L2 write misses:    0
+k. L2 miss rate:     0
+l. number of L2 writebacks:     0
+m. total memory traffic:      14692

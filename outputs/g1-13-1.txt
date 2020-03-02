@@ -1,0 +1,280 @@
+===== Simulator configuration =====
+BLOCKSIZE: 32
+L1_SIZE: 8192
+L1_ASSOC: 1
+L2_SIZE: 0
+L2_ASSOC: 0
+REPLACEMENT POLICY: LRU
+INCLUSION PROPERTY: non-inclusive
+trace_file: gcc_trace.txt
+===== L1 contents =====
+Set     0:       2002b D  
+Set     1:       2002b D  
+Set     2:       2002b D  
+Set     3:       2001b D  
+Set     4:       2002b D  
+Set     5:       2002b D  
+Set     6:       2002b D  
+Set     7:       2002b D  
+Set     8:       2002b D  
+Set     9:       2002b D  
+Set     10:       2002b D  
+Set     11:       2002b D  
+Set     12:       2002b D  
+Set     13:       2002b D  
+Set     14:       2001d
+Set     15:       2002b D  
+Set     16:       2001d D  
+Set     17:       2001c D  
+Set     18:       20024
+Set     19:       2001c D  
+Set     20:       2002b D  
+Set     21:       2001c
+Set     22:       2002a D  
+Set     23:       20018 D  
+Set     24:       2002a D  
+Set     25:       2002a D  
+Set     26:       2002a D  
+Set     27:       2002a D  
+Set     28:       2002a D  
+Set     29:       2001d D  
+Set     30:       2001c
+Set     31:       2001d D  
+Set     32:       2002a D  
+Set     33:       2002a D  
+Set     34:       2002a D  
+Set     35:       2002a D  
+Set     36:       2002a D  
+Set     37:       2001b D  
+Set     38:       2001b D  
+Set     39:       2001b D  
+Set     40:       2001b D  
+Set     41:       2001b D  
+Set     42:       2001b D  
+Set     43:       2002a D  
+Set     44:       2001f
+Set     45:       2001b D  
+Set     46:       2001b D  
+Set     47:       20022 D  
+Set     48:       20022 D  
+Set     49:       20015 D  
+Set     50:       20022 D  
+Set     51:       2001f D  
+Set     52:       2001f D  
+Set     53:       2002a D  
+Set     54:       20022 D  
+Set     55:       2002a D  
+Set     56:       2002a D  
+Set     57:       2002a D  
+Set     58:       2002a D  
+Set     59:       2002a D  
+Set     60:       2002a D  
+Set     61:       2001b D  
+Set     62:       2001b D  
+Set     63:       2002a D  
+Set     64:       2001f D  
+Set     65:       2001b D  
+Set     66:       2002a D  
+Set     67:       2002a D  
+Set     68:       2002a D  
+Set     69:       2002a D  
+Set     70:       2001e D  
+Set     71:       2002a D  
+Set     72:       2002a D  
+Set     73:       2002a D  
+Set     74:       20021 D  
+Set     75:       20021 D  
+Set     76:       2001f D  
+Set     77:       2002a D  
+Set     78:       2002a D  
+Set     79:       2002a D  
+Set     80:       2002a D  
+Set     81:       2002a D  
+Set     82:       2002a D  
+Set     83:       2002a D  
+Set     84:       2002a D  
+Set     85:       2002a D  
+Set     86:       2002a D  
+Set     87:       2002a D  
+Set     88:       2002a D  
+Set     89:       2001b
+Set     90:       2002a D  
+Set     91:       2001b D  
+Set     92:       2001b D  
+Set     93:       2001f D  
+Set     94:       2001f D  
+Set     95:       2002a D  
+Set     96:       2002a D  
+Set     97:       2002a D  
+Set     98:       2002a D  
+Set     99:       2002a D  
+Set     100:       2002a D  
+Set     101:       2002a D  
+Set     102:       2002a D  
+Set     103:       2001f D  
+Set     104:       2002a D  
+Set     105:       2002a D  
+Set     106:       2002a D  
+Set     107:       2002a D  
+Set     108:       2002a D  
+Set     109:       2002a D  
+Set     110:       2001b D  
+Set     111:       2001b D  
+Set     112:       2002a D  
+Set     113:       2001b
+Set     114:       2001f D  
+Set     115:       20029 D  
+Set     116:       2002a D  
+Set     117:       2002a D  
+Set     118:       2002a D  
+Set     119:       2002a D  
+Set     120:       2001f D  
+Set     121:       2000f
+Set     122:       2000f
+Set     123:       2000e
+Set     124:       2000e
+Set     125:       2000f
+Set     126:       2001a D  
+Set     127:       20019 D  
+Set     128:       20019 D  
+Set     129:       20019 D  
+Set     130:       20019 D  
+Set     131:       20029 D  
+Set     132:       2000f
+Set     133:       2002a D  
+Set     134:       2002a D  
+Set     135:       2002a D  
+Set     136:       2002a D  
+Set     137:       2002a D  
+Set     138:       2002a D  
+Set     139:       2002a D  
+Set     140:       2000f
+Set     141:       2002a D  
+Set     142:       2001a D  
+Set     143:       2001f D  
+Set     144:       2002a D  
+Set     145:       2002a D  
+Set     146:       20014
+Set     147:       2002a D  
+Set     148:       2000f
+Set     149:       20000
+Set     150:       20000
+Set     151:       20000
+Set     152:       20000
+Set     153:       20000
+Set     154:       20000
+Set     155:       20000
+Set     156:       20018 D  
+Set     157:       20028 D  
+Set     158:       20028 D  
+Set     159:       2001a D  
+Set     160:       20018
+Set     161:       20028 D  
+Set     162:       20018
+Set     163:       20018
+Set     164:       20017 D  
+Set     165:       20017
+Set     166:       20018
+Set     167:       2000f
+Set     168:       2000f
+Set     169:       2000f
+Set     170:       2000f
+Set     171:       20013
+Set     172:       2001a
+Set     173:       20013
+Set     174:       20013
+Set     175:       20013
+Set     176:       2001a
+Set     177:       20013
+Set     178:       20013
+Set     179:       20028 D  
+Set     180:       20028 D  
+Set     181:       20028 D  
+Set     182:       20028 D  
+Set     183:       2001b D  
+Set     184:       20017 D  
+Set     185:       20017 D  
+Set     186:       2001a D  
+Set     187:       2001a
+Set     188:       2001a
+Set     189:       2001a D  
+Set     190:       20028 D  
+Set     191:       20028 D  
+Set     192:       20028 D  
+Set     193:       20028 D  
+Set     194:       20028 D  
+Set     195:       2001a D  
+Set     196:       20028 D  
+Set     197:       20028 D  
+Set     198:       2001a D  
+Set     199:       2001a
+Set     200:       3d819 D  
+Set     201:       3d819 D  
+Set     202:       2001f D  
+Set     203:       20028 D  
+Set     204:       20028 D  
+Set     205:       20028 D  
+Set     206:       20028 D  
+Set     207:       20028 D  
+Set     208:       20028 D  
+Set     209:       20028 D  
+Set     210:       20028 D  
+Set     211:       20028 D  
+Set     212:       20028 D  
+Set     213:       20028 D  
+Set     214:       20028 D  
+Set     215:       20028 D  
+Set     216:       20028 D  
+Set     217:       20028 D  
+Set     218:       20028 D  
+Set     219:       20028 D  
+Set     220:       20028 D  
+Set     221:       20028 D  
+Set     222:       20018 D  
+Set     223:       20018 D  
+Set     224:       20028 D  
+Set     225:       20028 D  
+Set     226:       20028 D  
+Set     227:       20028 D  
+Set     228:       20028 D  
+Set     229:       20028 D  
+Set     230:       2002a D  
+Set     231:       2002a D  
+Set     232:       2002a D  
+Set     233:       2002a D  
+Set     234:       2001a
+Set     235:       2002a D  
+Set     236:       2002a D  
+Set     237:       2001f D  
+Set     238:       2002a D  
+Set     239:       2002a D  
+Set     240:       2001c
+Set     241:       2002a D  
+Set     242:       2002a D  
+Set     243:       2002a D  
+Set     244:       20018 D  
+Set     245:       20023
+Set     246:       20023
+Set     247:       20023
+Set     248:       20023
+Set     249:       20023
+Set     250:       20023
+Set     251:       20023
+Set     252:       20018 D  
+Set     253:       2001a D  
+Set     254:       2002a D  
+Set     255:       2002a D  
+===== Simulation results (raw) ===== 
+a. number of L1 reads:   63640
+b. number of L1 read misses:   3327
+c. number of L1 writes:   36360
+d. number of L1 write misses:   3373
+e. L1 miss rate:     0.067000
+f. number of L1 writebacks:    3574
+g. number of L2 reads:    0
+h. number of L2 read misses:    0
+i. number of L2 writes:     0
+j. number of L2 write misses:    0
+k. L2 miss rate:     0
+l. number of L2 writebacks:     0
+m. total memory traffic:      10274
