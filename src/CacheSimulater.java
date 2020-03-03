@@ -91,6 +91,7 @@ public class CacheSimulater {
                     totalMemoryTraffic++;
                     Long l2Evict = l2Cache.evict(address);
                     if (l2Evict != null && ((l2Evict & 1L) != 1)) {
+                        // System.out.println(cnt);
                         Long l2EvictAddress = l2Evict >> 2;
                         if ((l2Evict & 2L) != 0) { 
                             l2Writebacks++;

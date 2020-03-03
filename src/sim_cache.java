@@ -40,7 +40,7 @@ class sim_cache {
 
 		// Read trace
 		try {
-			File f = new File("../traces/" + trace);
+			File f = new File(trace);
 			BufferedReader b = new BufferedReader(new FileReader(f));
 			String readLine = "";
 			String[] operationArr;

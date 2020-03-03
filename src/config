@@ -1,0 +1,31 @@
+0.
+java sim_cache 16 1024 2 0 0 0 0 gcc_trace.txt >> ../outputs/my00.txt
+diff -iw ../validation_runs/validation0.txt ../outputs/my00.txt
+
+1.
+java sim_cache 16 1024 1 0 0 0 0 perl_trace.txt >> ../outputs/my01.txt
+diff -iw ../validation_runs/validation1.txt ../outputs/my01.txt   
+
+2.
+java sim_cache 16 1024 2 0 0 1 0 gcc_trace.txt >> ../outputs/my02.txt
+diff -iw ../validation_runs/validation2.txt ../outputs/my02.txt 
+
+3.
+java sim_cache 16 1024 2 0 0 2 0 vortex_trace.txt >> ../outputs/my03.txt
+diff -iw ../validation_runs/validation3.txt ../outputs/my03.txt 
+
+4.
+java sim_cache 16 1024 2 8192 4 0 0 gcc_trace.txt >> ../outputs/my04.txt
+diff -iw ../validation_runs/validation4.txt ../outputs/my04.txt 
+
+5.
+java sim_cache 16 1024 1 8192 4 0 0 go_trace.txt >> ../outputs/my05.txt
+diff -iw ../validation_runs/validation5.txt ../outputs/my05.txt  
+
+6.
+java sim_cache 16 1024 2 8192 4 0 1 gcc_trace.txt >> ../outputs/my06.txt
+diff -iw ../validation_runs/validation6.txt ../outputs/my06.txt
+
+7.
+java sim_cache 16 1024 1 8192 4 0 1 compress_trace.txt >> ../outputs/my07.txt
+diff -iw ../validation_runs/validation7.txt ../outputs/my07.txt 
