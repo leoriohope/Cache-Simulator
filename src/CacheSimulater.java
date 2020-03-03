@@ -56,7 +56,7 @@ public class CacheSimulater {
             l1ReadMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if ((l1Evict != null) && ((l1Evict & 2) != 0)) { //Init the write requres only when the evicted block is dirty
+                if ((l1Evict != null) && ((l1Evict & 1L) == 0L) && ((l1Evict & 2) != 0)) { //Init the write requres only when the evicted block is dirty
                     Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
@@ -105,7 +105,7 @@ public class CacheSimulater {
                     l2Cache.write(address);
                 }
             } else {
-                if ((l1Evict != null) && ((l1Evict & 2L) != 0)) { //Init the write requres only when the evicted block is dirty
+                if ((l1Evict != null) && ((l1Evict & 2L) != 0) && ((l1Evict & 1L) == 0L)) { //Init the write requres only when the evicted block is dirty
                     // System.out.println("A write back!");
                     l1Writebacks++;
                     totalMemoryTraffic++;
@@ -125,7 +125,7 @@ public class CacheSimulater {
             l1WriteMiss++;
             Long l1Evict = l1Cache.evict(address);
             if (l2Cache != null) {
-                if ((l1Evict != null) && ((l1Evict & 2) != 0)) { //Init the write requres only when the evicted block is dirty
+                if ((l1Evict != null) && ((l1Evict & 2) != 0) && ((l1Evict & 1L) == 0L)) { //Init the write requres only when the evicted block is dirty
                     Long l1EvictAddress = l1Evict >> 2;
                     l1Writebacks++;
                     l2Writes++;
@@ -174,7 +174,7 @@ public class CacheSimulater {
                     l2Cache.write(address);
                 }
             } else {
-                if ((l1Evict != null) && (l1Evict & 2L) != 0) { //Init the write requres only when the evicted block is dirty
+                if ((l1Evict != null) && (l1Evict & 2L) != 0 && ((l1Evict & 1L) == 0L)) { //Init the write requres only when the evicted block is dirty
                         l1Writebacks++;
                         totalMemoryTraffic++;
                 }
