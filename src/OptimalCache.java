@@ -88,7 +88,7 @@ public class OptimalCache implements Cache{
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 1 || entry == 0L) { //Find the first empty entry
+            if (entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = (address << 2); // Don't make dirty here
                 updateOrder(address);
                 return cacheData[index][i];
@@ -104,7 +104,7 @@ public class OptimalCache implements Cache{
         // Write when hit
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((getTag(entry >> 2)).equals(tag)) { //Find the first empty entry
+            if (((entry & 1L) == 0L) && (getTag(entry >> 2)).equals(tag)) { //Find the first empty entry
                 // System.out.println("find a write hit");
                 cacheData[index][i] = (((address << 2) | 2L)); // Don't make dirty here
                 updateOrder(address);
@@ -114,7 +114,7 @@ public class OptimalCache implements Cache{
         //Write when miss
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) != 0 || entry == 0L) { //Find the first empty entry
+            if (entry == 0L) { //Find the first empty entry
                 cacheData[index][i] = ((address << 2) | 2L); // make dirty here
                 updateOrder(address);
                 return cacheData[index][i];
@@ -132,7 +132,7 @@ public class OptimalCache implements Cache{
         //If there is invalid or empty line, return null
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) != 0 || entry == 0) { 
+            if (entry == 0) { 
                 return null;
             } 
         }
@@ -182,9 +182,9 @@ public class OptimalCache implements Cache{
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if (getTag(entry >> 2).equals(tag)) {
+            if (((entry & 1L) != 1L) && getTag(entry >> 2).equals(tag)) {
                 cacheData[index][i] |= 1L; // set the last bit to 1
-                order[index][i] = 0; // update the order either
+                // order[index][i] = 0; // update the order either
                 if ((entry & 2L) == 1L) {
                     return true; // the invlided block is dirty
                 }
@@ -199,7 +199,7 @@ public class OptimalCache implements Cache{
         Integer index = getIndex(address).intValue();
         for (int i = 0; i < assoc; i++) {
             Long entry = cacheData[index][i];
-            if ((entry & 1L) == 0 && getTag(entry >> 2).equals(tag)) {
+            if (getTag(entry >> 2).equals(tag)) {
                 order[index][i] = optIndex.get(counter); // Set the current order for the delta access
             }
         }
